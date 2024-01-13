@@ -1,4 +1,6 @@
 import 'package:dnf_cal/screens/CharacterSearchPage.dart';
+import 'package:dnf_cal/screens/MainPage.dart';
+import 'package:dnf_cal/screens/RegisterCharacterPage.dart';
 import 'package:dnf_cal/screens/SettingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +33,8 @@ class MyAppState extends State<MyAppPage> {
   int _selectedIndex = 0;
 
   final List<Widget> _navIndex = [
-    Text("Hello"),
-    Text("Hello"),
+    MainPage(),
+    RegisterCharacterPage(),
     CharacterSearchPage(),
     SettingPage(),
   ];
