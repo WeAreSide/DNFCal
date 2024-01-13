@@ -1,4 +1,5 @@
 import 'package:dnf_cal/main.dart';
+import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:flutter/material.dart';
 
 class CharacterSearchPage extends StatefulWidget {
@@ -16,7 +17,11 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
     return Scaffold(
       body: Center(child:
         GestureDetector(
-            child: Text('캐릭터 검색 페이지')
+            child: Text(
+                '캐릭터 검색 페이지',
+                style: TextStyle(color: CustomColor.epic()),
+
+            )
         )
       ),
 
