@@ -47,33 +47,42 @@ class MyAppState extends State<MyAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _navIndex.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.blue,
-        unselectedItemColor: Colors.blueGrey,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: '성장달력',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: '등록된 캐릭터',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.search),
-            label: '캐릭터 검색',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
-            label: '설정',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onNavTapped,
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage('assets/images/default_background.png'), // 배경 이미지
+        ),
+      ),
+      child: Scaffold(
+        body: _navIndex.elementAt(_selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          fixedColor: Colors.blue,
+          unselectedItemColor: Colors.blueGrey,
+          showUnselectedLabels: true,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month),
+              label: '성장달력',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline),
+              label: '등록된 캐릭터',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.search),
+              label: '캐릭터 검색',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings_outlined),
+              label: '설정',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onNavTapped,
+        ),
+        backgroundColor: Colors.transparent,
       ),
     );
   }
