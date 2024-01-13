@@ -15,11 +15,10 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(child:
-      GestureDetector(
-          child: Text('설정 페이지')
-      )
+        GestureDetector(
+          child: Image.asset('assets/images/default_background.png'),
+        ),
       ),
-
     );
   }
 }
