@@ -5,7 +5,6 @@ import 'package:dnf_cal/screens/MainPage.dart';
 import 'package:dnf_cal/screens/RegisterCharacterPage.dart';
 import 'package:dnf_cal/screens/SettingPage.dart';
 import 'package:dnf_cal/widgets/global/BottomNavigationWidget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -50,27 +49,30 @@ class MyAppState extends State<MyAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: AssetImage('assets/images/default_background.png'), // 배경 이미지
-        ),
-      ),
-      child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-        child: Container(
-          color: Colors.black.withOpacity(0.5),
-          child: Scaffold(
-            body: _navIndex.elementAt(_selectedIndex),
-            bottomNavigationBar: BottomNavigationWidget(
-              selectedIndex: _selectedIndex,
-              onNavTapped: _onNavTapped,
+    return GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+      child:       Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/default_background.png'), // 배경 이미지
             ),
-            backgroundColor: Colors.transparent,
           ),
-        ),
-      )
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            child: Container(
+              color: Colors.black.withOpacity(0.5),
+              child: Scaffold(
+                body: _navIndex.elementAt(_selectedIndex),
+                bottomNavigationBar: BottomNavigationWidget(
+                  selectedIndex: _selectedIndex,
+                  onNavTapped: _onNavTapped,
+                ),
+                backgroundColor: Colors.transparent,
+              ),
+            ),
+          )
+      ),
     );
   }
 }

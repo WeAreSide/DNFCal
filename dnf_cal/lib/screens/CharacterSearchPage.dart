@@ -13,6 +13,9 @@ class CharacterSearchPage extends StatefulWidget {
 }
 
 class _CharacterSearchPageState extends State<CharacterSearchPage> {
+
+  String inputText = "";
+
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
