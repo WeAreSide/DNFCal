@@ -4,7 +4,6 @@ import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:flutter/material.dart';
 
 class CharacterSearchBar extends StatefulWidget {
-  const CharacterSearchBar({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -15,8 +14,6 @@ class CharacterSearchBar extends StatefulWidget {
 
 class _CharacterSearchState extends State<CharacterSearchBar> {
 
-  String inputText = "";
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,11 +23,11 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
         child: TextField(
           onChanged: (text) {
             setState(() {
-              inputText = text;
             });
           },
           onSubmitted: (text) {
-            print("검색: $inputText");
+            setState(() {
+            });
           },
           decoration: InputDecoration(
             hintText: '모험단 이름',

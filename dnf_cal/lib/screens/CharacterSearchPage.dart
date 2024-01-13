@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/CharacterSearch/CharacterSearchBar.dart';
 import '../widgets/CharacterSearch/CharacterSearchTopWidget.dart';
+import '../widgets/CharacterSearch/SearchResultTitleWidget.dart';
 
 class CharacterSearchPage extends StatefulWidget {
   const CharacterSearchPage({Key? key}) : super(key: key);
@@ -14,8 +14,6 @@ class CharacterSearchPage extends StatefulWidget {
 
 class _CharacterSearchPageState extends State<CharacterSearchPage> {
 
-  String inputText = "";
-
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -25,7 +23,12 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
           padding: EdgeInsets.only(top: statusBarHeight + 16),
           child: const CharacterSearchPageTopWidget(),
         ),
-        CharacterSearchBar()
+        CharacterSearchBar(),
+
+        Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: SearchResultTitleWidget(),
+        )
       ],
     );
   }
