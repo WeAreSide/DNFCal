@@ -7,9 +7,16 @@ class CharacterSearchBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 24, left: 20, right: 20),
       child: Align(
+        alignment: Alignment.center,
         child: Container(
           padding: const EdgeInsets.only(left: 20, right: 20),
           height: 40,
+          decoration: ShapeDecoration(
+            color: const Color(0x99D9D9D9),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(100),
+            ),
+          ),
           child: Row(
             children: [
               Text(
@@ -23,14 +30,7 @@ class CharacterSearchBar extends StatelessWidget {
               ),
             ],
           ),
-          decoration: ShapeDecoration(
-            color: Color(0x99D9D9D9),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100),
-            ),
-          ),
         ),
-        alignment: Alignment.center,
       ),
     );
   }

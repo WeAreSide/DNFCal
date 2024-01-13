@@ -17,8 +17,7 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: double.infinity,
-      child: DefaultBackgroundWidget(),
+      height: double.infinity
     );
   }
 }
