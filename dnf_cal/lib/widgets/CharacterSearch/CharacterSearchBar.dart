@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:dnf_cal/models/CustomColor.dart';
+import 'package:dnf_cal/models/SearchModel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CharacterSearchBar extends StatefulWidget {
 
@@ -22,12 +24,10 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
         height: 40,
         child: TextField(
           onChanged: (text) {
-            setState(() {
-            });
           },
           onSubmitted: (text) {
-            setState(() {
-            });
+            context.read<SearchModel>().setSubmitted(true);
+            print("Search: context.read<SearchModel>().setSubmitted(true)");
           },
           decoration: InputDecoration(
             hintText: '모험단 이름',

@@ -1,5 +1,7 @@
 import 'package:dnf_cal/models/CustomColor.dart';
+import 'package:dnf_cal/models/SearchModel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SearchResultTitleWidget extends StatefulWidget {
 
@@ -34,7 +36,7 @@ class _SearchResultTitleState extends State<SearchResultTitleWidget> {
                 child: SizedBox(),
               ),
               Visibility(
-                  visible: true,
+                  visible: context.watch<SearchModel>().isSubmitted,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(

@@ -1,14 +1,22 @@
 import 'dart:ui';
-
+import 'package:provider/provider.dart';
 import 'package:dnf_cal/screens/CharacterSearchPage.dart';
 import 'package:dnf_cal/screens/MainPage.dart';
 import 'package:dnf_cal/screens/RegisterCharacterPage.dart';
 import 'package:dnf_cal/screens/SettingPage.dart';
 import 'package:dnf_cal/widgets/global/BottomNavigationWidget.dart';
 import 'package:flutter/material.dart';
+import 'models/SearchModel.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => SearchModel()),
+        ],
+      child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -49,29 +57,32 @@ class MyAppState extends State<MyAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => SearchModel(),
+      child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-      child:       Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/images/default_background.png'), // 배경 이미지
-            ),
-          ),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-            child: Container(
-              color: Colors.black.withOpacity(0.5),
-              child: Scaffold(
-                body: _navIndex.elementAt(_selectedIndex),
-                bottomNavigationBar: BottomNavigationWidget(
-                  selectedIndex: _selectedIndex,
-                  onNavTapped: _onNavTapped,
-                ),
-                backgroundColor: Colors.transparent,
+        child:       Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/images/default_background.png'), // 배경 이미지
               ),
             ),
-          )
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+              child: Container(
+                color: Colors.black.withOpacity(0.5),
+                child: Scaffold(
+                  body: _navIndex.elementAt(_selectedIndex),
+                  bottomNavigationBar: BottomNavigationWidget(
+                    selectedIndex: _selectedIndex,
+                    onNavTapped: _onNavTapped,
+                  ),
+                  backgroundColor: Colors.transparent,
+                ),
+              ),
+            )
+        ),
       ),
     );
   }
