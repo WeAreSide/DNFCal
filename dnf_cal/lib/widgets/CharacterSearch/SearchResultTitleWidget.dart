@@ -50,7 +50,7 @@ class _SearchResultTitleState extends State<SearchResultTitleWidget> {
                       minimumSize: const Size(16, 20), // 최소 너비와 높이
                     ),
                     child: Text(
-                      "claer",
+                      "clear",
                       style: TextStyle(
                         color: CustomColor.uncommon(),
                         fontFamily: 'DNFForgedBlade', // Replace with your custom font family
