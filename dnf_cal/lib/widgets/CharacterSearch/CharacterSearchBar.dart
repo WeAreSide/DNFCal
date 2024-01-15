@@ -23,6 +23,7 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
       child: SizedBox(
         height: 40,
         child: TextField(
+          controller: context.read<SearchModel>().fieldText,
           onChanged: (text) {
           },
           onSubmitted: (text) {

@@ -38,7 +38,11 @@ class _SearchResultTitleState extends State<SearchResultTitleWidget> {
               Visibility(
                   visible: context.watch<SearchModel>().isSubmitted,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<SearchModel>().setSubmitted(false);
+                      context.read<SearchModel>().setInputText();
+                      context.read<SearchModel>().clearText();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xffD9D9D9).withOpacity(0.6),
                       padding: const EdgeInsets.symmetric(horizontal: 16),
