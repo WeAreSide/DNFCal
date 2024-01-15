@@ -1,12 +1,22 @@
+import 'dart:ui';
+import 'package:provider/provider.dart';
 import 'package:dnf_cal/screens/CharacterSearchPage.dart';
 import 'package:dnf_cal/screens/MainPage.dart';
 import 'package:dnf_cal/screens/RegisterCharacterPage.dart';
 import 'package:dnf_cal/screens/SettingPage.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dnf_cal/widgets/global/BottomNavigationWidget.dart';
 import 'package:flutter/material.dart';
+import 'models/SearchModel.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => SearchModel()),
+        ],
+      child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,8 +24,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MemoApp',
+    return const MaterialApp(
+      title: 'DNFCal',
       home: MyAppPage(),
     );
   }
@@ -33,10 +43,10 @@ class MyAppState extends State<MyAppPage> {
   int _selectedIndex = 0;
 
   final List<Widget> _navIndex = [
-    MainPage(),
-    RegisterCharacterPage(),
-    CharacterSearchPage(),
-    SettingPage(),
+    const MainPage(),
+    const RegisterCharacterPage(),
+    const CharacterSearchPage(),
+    const SettingPage(),
   ];
 
   void _onNavTapped(int index) {
@@ -47,33 +57,32 @@ class MyAppState extends State<MyAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _navIndex.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.blue,
-        unselectedItemColor: Colors.blueGrey,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: '성장달력',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: '등록된 캐릭터',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.search),
-            label: '캐릭터 검색',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
-            label: '설정',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onNavTapped,
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => SearchModel(),
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child:       Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/images/default_background.png'), // 배경 이미지
+              ),
+            ),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+              child: Container(
+                color: Colors.black.withOpacity(0.5),
+                child: Scaffold(
+                  body: _navIndex.elementAt(_selectedIndex),
+                  bottomNavigationBar: BottomNavigationWidget(
+                    selectedIndex: _selectedIndex,
+                    onNavTapped: _onNavTapped,
+                  ),
+                  backgroundColor: Colors.transparent,
+                ),
+              ),
+            )
+        ),
       ),
     );
   }

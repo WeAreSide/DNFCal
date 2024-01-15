@@ -1,6 +1,8 @@
 import 'package:dnf_cal/main.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/global/DefaultBackgroundWidget.dart';
+
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
 
@@ -13,12 +15,9 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child:
-        GestureDetector(
-          child: Image.asset('assets/images/default_background.png'),
-        ),
-      ),
+    return Container(
+      width: double.infinity,
+      height: double.infinity
     );
   }
 }

@@ -33,15 +33,15 @@ class CustomColor extends Color {
     return const Color(0xffFF7800);
   }
 
-  static Color darkgray() {
+  static Color darkGray() {
     return const Color(0xff5F5F5F);
   }
 
   static Color buttonStroke() {
-    return Color.fromRGBO(211, 211, 211, 0.3);
+    return const Color.fromRGBO(211, 211, 211, 0.3);
   }
 
   static Color buttonUnselected() {
-    return Color.fromRGBO(211, 211, 211, 0.3);
+    return const Color.fromRGBO(211, 211, 211, 0.3);
   }
 }
