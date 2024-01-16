@@ -9,14 +9,12 @@ import 'package:flutter/material.dart';
 import 'models/SearchModel.dart';
 
 void main() {
-  runApp(
-    MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => SearchModel()),
-        ],
-      child: MyApp(),
-    )
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => SearchModel()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -61,11 +59,12 @@ class MyAppState extends State<MyAppPage> {
       create: (BuildContext context) => SearchModel(),
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child:       Container(
+        child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/images/default_background.png'), // 배경 이미지
+                image: AssetImage(
+                    'assets/images/default_background.png'), // 배경 이미지
               ),
             ),
             child: BackdropFilter(
@@ -81,8 +80,7 @@ class MyAppState extends State<MyAppPage> {
                   backgroundColor: Colors.transparent,
                 ),
               ),
-            )
-        ),
+            )),
       ),
     );
   }

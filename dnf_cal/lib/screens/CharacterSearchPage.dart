@@ -1,4 +1,5 @@
 import 'package:dnf_cal/widgets/CharacterSearch/ServerSelectionWidget.dart';
+import 'package:dnf_cal/widgets/SearchCharacterCell.dart';
 import 'package:flutter/material.dart';
 import '../widgets/CharacterSearch/CharacterSearchBar.dart';
 import '../widgets/CharacterSearch/CharacterSearchTopWidget.dart';
@@ -14,7 +15,6 @@ class CharacterSearchPage extends StatefulWidget {
 }
 
 class _CharacterSearchPageState extends State<CharacterSearchPage> {
-
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -32,6 +32,10 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
         Padding(
           padding: const EdgeInsets.only(top: 30),
           child: SearchResultTitleWidget(),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 32, left: 20, right: 20),
+          child: SearchCharacterCell(),
         )
       ],
     );
