@@ -12,11 +12,11 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
+    double statusBarHeight = MediaQuery.of(context).padding.top;
     return Container(
       color: Colors.transparent,
       child: Padding(
-        padding:
-            const EdgeInsets.only(left: 12, right: 12, top: 54, bottom: 40),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Container(
           color: Colors.transparent,
           child: Column(
@@ -24,7 +24,7 @@ class _MainPageState extends State<MainPage> {
             mainAxisSize: MainAxisSize.max,
             children: [
               SizedBox(
-                height: 44,
+                height: statusBarHeight + 44,
               ),
               AdventureInfo(),
               SizedBox(
@@ -57,7 +57,6 @@ class AdventureInfo extends StatelessWidget {
         color: Color(0xff0b1218),
       ),
       height: 97,
-      margin: const EdgeInsets.symmetric(horizontal: 12),
       child: Stack(
         children: [
           Positioned(

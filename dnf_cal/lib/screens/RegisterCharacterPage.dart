@@ -26,8 +26,12 @@ class _RegisterCharacterPageState extends State<RegisterCharacterPage> {
 
   @override
   Widget build(BuildContext context) {
+    double statusBarHeight = MediaQuery.of(context).padding.top;
     return Column(
       children: [
+        SizedBox(
+          height: statusBarHeight + 16,
+        ),
         RegisterChracterEditBar(
           onEdit: toggleEditing,
           isEditing: isEditing,
@@ -70,7 +74,7 @@ class RegisterChracterEditBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 70, bottom: 22),
+      margin: const EdgeInsets.only(bottom: 22),
       height: 41,
       color: Colors.transparent,
       child: Row(
@@ -81,7 +85,7 @@ class RegisterChracterEditBar extends StatelessWidget {
           Icon(
             Icons.square,
             color: Colors.white,
-            size: 20,
+            size: 30,
           ),
           SizedBox(
             width: 16,
@@ -252,13 +256,10 @@ class CharacterProfile extends StatelessWidget {
   Widget _CharacterImageWidget() {
     return Expanded(
       child: Container(
-        color: Colors.grey[400],
-        child: Center(
-          child: Text(
-            id.toString(),
-            style: TextStyle(
-              fontSize: 60,
-            ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/dummy_character.png'),
+            fit: BoxFit.contain,
           ),
         ),
       ),
