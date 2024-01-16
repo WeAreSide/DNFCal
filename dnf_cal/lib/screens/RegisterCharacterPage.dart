@@ -41,7 +41,7 @@ class _RegisterCharacterPageState extends State<RegisterCharacterPage> {
         ),
         Expanded(
           child: Container(
-            margin: const EdgeInsets.all(22.0),
+            margin: const EdgeInsets.only(top: 22, left: 22, right: 22),
             color: Colors.transparent,
             child: GridView(
               padding: const EdgeInsets.all(0),

@@ -13,6 +13,8 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
+    double spaceHeight =
+        (MediaQuery.of(context).size.height - statusBarHeight - 533) * 0.3;
     return Container(
       color: Colors.transparent,
       child: Padding(
@@ -28,7 +30,7 @@ class _MainPageState extends State<MainPage> {
               ),
               AdventureInfo(),
               SizedBox(
-                height: 56,
+                height: spaceHeight,
               ),
               CalendarSpace(),
             ],

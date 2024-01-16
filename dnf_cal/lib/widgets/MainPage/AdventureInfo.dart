@@ -19,7 +19,6 @@ class AdventureInfo extends StatelessWidget {
         color: Color(0xff0b1218),
       ),
       height: 97,
-      margin: const EdgeInsets.symmetric(horizontal: 12),
       child: Stack(
         children: [
           Positioned(
