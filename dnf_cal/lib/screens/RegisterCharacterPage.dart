@@ -29,8 +29,12 @@ class _RegisterCharacterPageState extends State<RegisterCharacterPage> {
 
   @override
   Widget build(BuildContext context) {
+    double statusBarHeight = MediaQuery.of(context).padding.top;
     return Column(
       children: [
+        SizedBox(
+          height: statusBarHeight + 16,
+        ),
         RegisterChracterEditBar(
           onEdit: toggleEditing,
           isEditing: isEditing,

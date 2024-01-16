@@ -32,9 +32,9 @@ class _SearchResultTitleState extends State<SearchResultTitleWidget> {
                   fontFamily: "DNFForgedBlade",
                 ),
               ),
-              const Expanded(
-                child: SizedBox(),
-              ),
+              // const Expanded(
+              //   child: SizedBox(),
+              // ),
               Visibility(
                   visible: context.watch<SearchModel>().isSubmitted,
                   child: ElevatedButton(
