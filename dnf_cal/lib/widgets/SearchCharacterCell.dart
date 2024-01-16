@@ -23,7 +23,8 @@ class SearchCharacterCell extends StatelessWidget {
             Container(
               height: 100,
               child: Padding(
-                padding: EdgeInsets.only(left: 12, top: 12, bottom: 12, right: 36),
+                padding:
+                    EdgeInsets.only(left: 12, top: 12, bottom: 12, right: 36),
                 child: Image.asset(
                   'assets/images/dummy_character.png',
                 ),
@@ -32,7 +33,7 @@ class SearchCharacterCell extends StatelessWidget {
             Column(
               children: [
                 Text(
-                    "100Lv. 캐릭터 이름",
+                  "100Lv. 캐릭터 이름",
                   style: TextStyle(
                     color: CustomColor.uncommon(),
                     fontSize: 18,
