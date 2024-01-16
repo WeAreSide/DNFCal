@@ -1,6 +1,7 @@
 import 'package:dnf_cal/models/SearchModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:dnf_cal/widgets/global/DnfText.dart';
 
 import '../../models/CustomColor.dart';
 
@@ -39,18 +40,14 @@ class _ServerSelectionWidget extends State<ServerSelectionWidget> {
                             color: CustomColor.buttonStroke(), width: 1),
                         minimumSize: const Size(16, 30), // 최소 너비와 높이
                       ),
-                      child: Text(
+                      child: DnfText(
                         serverName,
-                        style: TextStyle(
-                          color: context.read<SearchModel>().selectedServer ==
-                                  serverName
-                              ? CustomColor.uncommon()
-                              : CustomColor.uncommon().withOpacity(0.5),
-                          fontFamily: 'DNFForgedBlade',
-                          // Replace with your custom font family
-                          fontSize: 16, // Adjust the font size as needed
-                          // Other text style properties
-                        ),
+                        color: context.read<SearchModel>().selectedServer ==
+                                serverName
+                            ? CustomColor.common()
+                            : CustomColor.common().withOpacity(0.5),
+                        fontSize: 16, // Adjust the font size as needed
+                        // Other text style properties
                       ),
                     ),
                   ),

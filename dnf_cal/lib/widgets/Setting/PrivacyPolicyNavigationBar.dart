@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/CustomColor.dart';
+import '../global/DnfText.dart';
 
 class PrivacyPolicyNavigationBar extends StatelessWidget {
   @override
@@ -22,15 +23,9 @@ class PrivacyPolicyNavigationBar extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: DnfText(
                 '개인 정보 처리 방침',
-                style: TextStyle(
-                  color: CustomColor.common(),
-                  fontSize: 16,
-                  fontFamily: 'DNFForgedBlade',
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
+                fontSize: 16,
               ),
             ),
           ],

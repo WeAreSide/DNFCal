@@ -5,11 +5,11 @@ class CustomColor extends Color {
   // 사용법 예시 : CustomColor.epic()
   CustomColor(super.value);
 
-  static Color uncommon() {
+  static Color common() {
     return const Color(0xffFFFFFF);
   }
 
-  static Color common() {
+  static Color uncommon() {
     return const Color(0xff68D5ED);
   }
 
