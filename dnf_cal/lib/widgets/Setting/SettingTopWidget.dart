@@ -11,32 +11,28 @@ class SettingTopWidget extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Expanded(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
+            padding: const EdgeInsets.only(left: 20),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                width: 30,
+                height: 30,
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFD9D9D9),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
               ),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Expanded(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: DnfText(
-                  '설정',
-                  fontSize: 16,
-                ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: DnfText(
+                '설정',
+                fontSize: 16,
               ),
             ),
           ),
