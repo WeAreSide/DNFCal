@@ -1,16 +1,14 @@
 import 'package:dnf_cal/models/CustomColor.dart';
+import 'package:dnf_cal/models/RegisterCharacterModel.dart';
 import 'package:dnf_cal/widgets/RegisterCharacterPage/DeleteRegisterCharacterButton.dart';
 import 'package:dnf_cal/widgets/global/DnfText.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CharacterProfile extends StatelessWidget {
-  final bool isEditing;
-  final VoidCallback onDelete;
   final int id;
   const CharacterProfile({
     Key? key,
-    required this.isEditing,
-    required this.onDelete,
     required this.id,
   }) : super(key: key);
 
@@ -30,9 +28,10 @@ class CharacterProfile extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          isEditing
-              ? DeleteRegisterCharacterButton(context, onDelete: onDelete)
-              : SizedBox(),
+          DeleteRegisterCharacterButton(
+            context,
+            id: id,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 7),
             child: Container(

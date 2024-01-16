@@ -1,12 +1,10 @@
 import 'package:dnf_cal/widgets/global/DnfText.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../models/RegisterCharacterModel.dart';
 
 class RegisterChracterEditBar extends StatelessWidget {
-  final VoidCallback onEdit;
-  final bool isEditing;
-  const RegisterChracterEditBar(
-      {Key? key, required this.onEdit, required this.isEditing})
-      : super(key: key);
+  const RegisterChracterEditBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class RegisterChracterEditBar extends StatelessWidget {
           Icon(
             Icons.square,
             color: Colors.white,
-            size: 20,
+            size: 30,
           ),
           SizedBox(
             width: 16,
@@ -36,19 +34,22 @@ class RegisterChracterEditBar extends StatelessWidget {
               ),
             ),
           ),
-          isEditing
-              ? IconButton(
-                  onPressed: onEdit,
-                  icon: Icon(
-                    Icons.edit_off,
-                    color: Colors.white,
-                  ))
-              : IconButton(
-                  onPressed: onEdit,
-                  icon: Icon(
-                    Icons.edit,
-                    color: Colors.white,
-                  )),
+          Consumer<RegisterCharacterModel>(
+            builder: (context, registerCharacterModel, child) {
+              return IconButton(
+                onPressed: () {
+                  registerCharacterModel.toggleEditing();
+                },
+                icon: Icon(
+                  Provider.of<RegisterCharacterModel>(context).isEditing
+                      ? Icons.edit_off
+                      : Icons.edit,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              );
+            },
+          ),
           SizedBox(
             width: 10,
           ),
