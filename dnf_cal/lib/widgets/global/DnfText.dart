@@ -13,6 +13,7 @@ class DnfText extends StatelessWidget {
     this.textAlign,
     this.maxLines,
     this.overflow,
+    this.decoration,
   }) : super(key: key);
 
   final String text;
@@ -23,6 +24,7 @@ class DnfText extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLines;
   final TextOverflow? overflow;
+  final TextDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class DnfText extends StatelessWidget {
         fontSize: fontSize ?? 12,
         fontWeight: fontWeight ?? FontWeight.w500,
         fontFamily: fontFamily ?? 'DNFForgedBlade',
+        decoration: decoration ?? TextDecoration.none,
       ),
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,

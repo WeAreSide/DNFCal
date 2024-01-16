@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/CustomColor.dart';
+import '../global/DnfText.dart';
 
 class OpenSourceNavigationBar extends StatelessWidget {
   @override
@@ -22,15 +23,10 @@ class OpenSourceNavigationBar extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: DnfText(
                 '오픈소스 라이브러리',
-                style: TextStyle(
-                  color: CustomColor.common(),
-                  fontSize: 16,
-                  fontFamily: 'DNFForgedBlade',
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
+                fontSize: 16,
+                decoration: TextDecoration.none,
               ),
             ),
           ],

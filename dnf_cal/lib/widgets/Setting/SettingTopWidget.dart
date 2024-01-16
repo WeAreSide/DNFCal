@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../models/CustomColor.dart';
+import '../global/DnfText.dart';
 
 class SettingTopWidget extends StatelessWidget {
   const SettingTopWidget({super.key});
@@ -33,14 +33,9 @@ class SettingTopWidget extends StatelessWidget {
             child: Expanded(
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
+                child: DnfText(
                   '설정',
-                  style: TextStyle(
-                    color: CustomColor.uncommon(),
-                    fontSize: 16,
-                    fontFamily: 'DNFForgedBlade',
-                    fontWeight: FontWeight.w500,
-                  ),
+                  fontSize: 16,
                 ),
               ),
             ),

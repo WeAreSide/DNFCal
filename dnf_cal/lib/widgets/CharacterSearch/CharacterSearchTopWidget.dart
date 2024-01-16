@@ -1,5 +1,6 @@
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:flutter/material.dart';
+import 'package:dnf_cal/widgets/global/DnfText.dart';
 
 class CharacterSearchPageTopWidget extends StatelessWidget {
   const CharacterSearchPageTopWidget({super.key});
@@ -27,16 +28,11 @@ class CharacterSearchPageTopWidget extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(left: 20),
-              child:Align(
+              child: Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
+                child: DnfText(
                   '모험단 정보를 검색하세요',
-                  style: TextStyle(
-                    color: CustomColor.uncommon(),
-                    fontSize: 16,
-                    fontFamily: 'DNFForgedBlade',
-                    fontWeight: FontWeight.w500,
-                  ),
+                  fontSize: 16,
                 ),
               ),
             ),

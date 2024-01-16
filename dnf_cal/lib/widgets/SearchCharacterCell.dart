@@ -1,5 +1,6 @@
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:flutter/material.dart';
+import 'package:dnf_cal/widgets/global/DnfText.dart';
 
 class SearchCharacterCell extends StatelessWidget {
   const SearchCharacterCell({Key? key});
@@ -32,35 +33,21 @@ class SearchCharacterCell extends StatelessWidget {
             ),
             Column(
               children: [
-                Text(
+                DnfText(
                   "100Lv. 캐릭터 이름",
-                  style: TextStyle(
-                    color: CustomColor.uncommon(),
-                    fontSize: 18,
-                    fontFamily: 'DNFForgedBlade',
-                    fontWeight: FontWeight.w500,
-                  ),
+                  fontSize: 18,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 6, horizontal: 0),
-                  child: Text(
+                  child: DnfText(
                     "직업 이름",
-                    style: TextStyle(
-                      color: CustomColor.uncommon(),
-                      fontSize: 10,
-                      fontFamily: 'DNFForgedBlade',
-                      fontWeight: FontWeight.w500,
-                    ),
+                    fontSize: 10,
                   ),
                 ),
-                Text(
+                DnfText(
                   "명성",
-                  style: TextStyle(
-                    color: CustomColor.epic(),
-                    fontSize: 10,
-                    fontFamily: 'DNFForgedBlade',
-                    fontWeight: FontWeight.w500,
-                  ),
+                  color: CustomColor.epic(),
+                  fontSize: 10,
                 ),
               ],
               crossAxisAlignment: CrossAxisAlignment.start,
