@@ -13,6 +13,7 @@ class BottomNavigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.white.withOpacity(0.70),
       fixedColor: Colors.blue,
       unselectedItemColor: Colors.blueGrey,
       showUnselectedLabels: true,
@@ -20,15 +21,15 @@ class BottomNavigationWidget extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.calendar_month),
-          label: '성장달력',
+          label: '성장 달력',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person_outline),
-          label: '등록된 캐릭터',
+          label: '캐릭터',
         ),
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.search),
-          label: '캐릭터 검색',
+          label: '검색',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings_outlined),
