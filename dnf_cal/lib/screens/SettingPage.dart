@@ -5,6 +5,8 @@ import '../models/CustomColor.dart';
 import '../widgets/CharacterSearch/CharacterSearchTopWidget.dart';
 import '../widgets/Setting/SettingTopWidget.dart';
 import '../widgets/global/DefaultBackgroundWidget.dart';
+import 'OpenSourcePage.dart';
+import 'PrivacyPolicyPage.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -30,7 +32,12 @@ class _SettingPageState extends State<SettingPage> {
           width: double.maxFinite,
           height: 54,
           child: ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {
+            Navigator.of(context)
+                .push(MaterialPageRoute(
+            builder: (context) => OpenSourcePage())
+            )
+          },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF0B1218),
               side: BorderSide(color: CustomColor.buttonStroke(), width: 1),
@@ -56,7 +63,12 @@ class _SettingPageState extends State<SettingPage> {
           width: double.maxFinite,
           height: 54,
           child: ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(
+                  builder: (context) => PrivacyPolicyPage())
+              )
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF0B1218),
               side: BorderSide(color: CustomColor.buttonStroke(), width: 1),

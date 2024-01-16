@@ -6,32 +6,28 @@ class CharacterSearchPageTopWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 41,
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Expanded(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
+    return Padding(
+      padding: EdgeInsets.only(left: 20),
+      child: SizedBox(
+        height: 41,
+        child: Row(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                width: 30,
+                height: 30,
+                decoration: ShapeDecoration(
+                  color: Color(0xFFD9D9D9),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Expanded(
-              child: Align(
+            Padding(
+              padding: EdgeInsets.only(left: 20),
+              child:Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   '모험단 정보를 검색하세요',
@@ -44,8 +40,8 @@ class CharacterSearchPageTopWidget extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
