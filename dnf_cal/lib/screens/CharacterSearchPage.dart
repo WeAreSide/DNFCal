@@ -3,6 +3,7 @@ import 'package:dnf_cal/widgets/SearchCharacterCell.dart';
 import 'package:flutter/material.dart';
 import '../widgets/CharacterSearch/CharacterSearchBar.dart';
 import '../widgets/CharacterSearch/CharacterSearchTopWidget.dart';
+import '../widgets/CharacterSearch/SearchCharacterCellScroll.dart';
 import '../widgets/CharacterSearch/SearchResultTitleWidget.dart';
 
 class CharacterSearchPage extends StatefulWidget {
@@ -33,9 +34,11 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
           padding: const EdgeInsets.only(top: 30),
           child: SearchResultTitleWidget(),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 32, left: 20, right: 20),
-          child: SearchCharacterCell(),
+        Expanded(
+            child: Padding(
+                padding: const EdgeInsets.only(top: 32, left: 20, right: 20),
+                child: SearchCharacterCellScroll()
+            )
         )
       ],
     );
