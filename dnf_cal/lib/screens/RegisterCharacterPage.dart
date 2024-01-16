@@ -1,5 +1,6 @@
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:flutter/material.dart';
+import 'package:dnf_cal/widgets/global/DnfText.dart';
 
 class RegisterCharacterPage extends StatefulWidget {
   const RegisterCharacterPage({Key? key}) : super(key: key);
@@ -89,14 +90,9 @@ class RegisterChracterEditBar extends StatelessWidget {
           Expanded(
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: DnfText(
                 '모험단 이름',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontFamily: 'DNFForgedBlade',
-                  fontWeight: FontWeight.w500,
-                ),
+                fontSize: 16,
               ),
             ),
           ),
@@ -210,14 +206,10 @@ class CharacterProfile extends StatelessWidget {
   Widget _GuildNameWidget() {
     return Container(
       margin: EdgeInsets.only(bottom: 4),
-      child: Text(
+      child: DnfText(
         '[길드 이름]',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 6,
-          fontFamily: 'DNFForgedBlade',
-          fontWeight: FontWeight.w700,
-        ),
+        fontSize: 6,
+        fontWeight: FontWeight.w700,
       ),
     );
   }
@@ -235,14 +227,10 @@ class CharacterProfile extends StatelessWidget {
           SizedBox(
             width: 4,
           ),
-          Text(
+          DnfText(
             '명성 수치',
-            style: TextStyle(
-              color: CustomColor.epic(),
-              fontSize: 6,
-              fontFamily: 'DNFForgedBlade',
-              fontWeight: FontWeight.w500,
-            ),
+            color: CustomColor.epic(),
+            fontSize: 6,
           ),
         ],
       ),
@@ -252,13 +240,10 @@ class CharacterProfile extends StatelessWidget {
   Widget _CharacterImageWidget() {
     return Expanded(
       child: Container(
-        color: Colors.grey[400],
-        child: Center(
-          child: Text(
-            id.toString(),
-            style: TextStyle(
-              fontSize: 60,
-            ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/dummy_character.png'),
+            fit: BoxFit.contain,
           ),
         ),
       ),
@@ -268,14 +253,9 @@ class CharacterProfile extends StatelessWidget {
   Widget _CharacterNameWidget() {
     return Container(
       margin: EdgeInsets.only(top: 4),
-      child: Text(
+      child: DnfText(
         '캐릭터 이름',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 8,
-          fontFamily: 'DNFForgedBlade',
-          fontWeight: FontWeight.w500,
-        ),
+        fontSize: 8,
       ),
     );
   }
@@ -283,14 +263,10 @@ class CharacterProfile extends StatelessWidget {
   Widget _TotalItemLevelWidget() {
     return Container(
       margin: EdgeInsets.only(top: 4, bottom: 4),
-      child: Text(
+      child: DnfText(
         '총합 템레벨',
-        style: TextStyle(
-          color: CustomColor.epic(),
-          fontSize: 6,
-          fontFamily: 'DNFForgedBlade',
-          fontWeight: FontWeight.w500,
-        ),
+        color: CustomColor.epic(),
+        fontSize: 6,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:dnf_cal/widgets/global/DnfText.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -82,27 +83,17 @@ class AdventureInfo extends StatelessWidget {
               children: [
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    '모험단 이름',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontFamily: 'DNFForgedBlade',
-                        fontWeight: FontWeight.w500),
-                  ),
+                  child: DnfText('모험단 이름'),
                 ),
                 SizedBox(
                   height: 12,
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  child: DnfText(
                     '등록된 캐릭터: 1개',
-                    style: TextStyle(
-                        color: CustomColor.chronicle(),
-                        fontSize: 10,
-                        fontFamily: 'DNFForgedBlade',
-                        fontWeight: FontWeight.w500),
+                    color: CustomColor.chronicle(),
+                    fontSize: 10,
                   ),
                 ),
                 SizedBox(
@@ -110,13 +101,10 @@ class AdventureInfo extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  child: DnfText(
                     '최근 갱신 날짜: 2024-01-10-12:12',
-                    style: TextStyle(
-                        color: CustomColor.legendary(),
-                        fontSize: 10,
-                        fontFamily: 'DNFForgedBlade',
-                        fontWeight: FontWeight.w500),
+                    color: CustomColor.legendary(),
+                    fontSize: 10,
                   ),
                 ),
               ],
@@ -168,9 +156,9 @@ class _CalendarSpaceState extends State<CalendarSpace> {
             ),
             titleTextStyle: TextStyle(
               color: Colors.white,
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: 'DNFForgedBlade',
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w700,
             ),
           ),
           daysOfWeekStyle: DaysOfWeekStyle(
@@ -181,13 +169,13 @@ class _CalendarSpaceState extends State<CalendarSpace> {
               color: Colors.white,
               fontSize: 12,
               fontFamily: 'DNFForgedBlade',
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w300,
             ),
             weekendStyle: TextStyle(
               color: Colors.white,
               fontSize: 12,
               fontFamily: 'DNFForgedBlade',
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w300,
             ),
           ),
           calendarStyle: CalendarStyle(
@@ -257,14 +245,9 @@ class _CalendarSpaceState extends State<CalendarSpace> {
                 }
                 return Positioned(
                   bottom: 1,
-                  child: Text(
+                  child: DnfText(
                     '${events[0]}',
-                    style: TextStyle(
-                      color: levelColor,
-                      fontSize: 12,
-                      fontFamily: 'DNFForgedBlade',
-                      fontWeight: FontWeight.w500,
-                    ),
+                    color: levelColor,
                   ),
                 );
               }
