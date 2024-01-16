@@ -1,3 +1,4 @@
+import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:flutter/material.dart';
 
 class RegisterCharacterPage extends StatefulWidget {
@@ -34,7 +35,7 @@ class _RegisterCharacterPageState extends State<RegisterCharacterPage> {
         Expanded(
           child: Container(
             margin: const EdgeInsets.all(22.0),
-            color: Colors.grey,
+            color: Colors.transparent,
             child: GridView(
               padding: const EdgeInsets.all(0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -71,7 +72,7 @@ class RegisterChracterEditBar extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 70, bottom: 22),
       height: 41,
-      color: Colors.blue,
+      color: Colors.transparent,
       child: Row(
         children: [
           SizedBox(
@@ -79,6 +80,7 @@ class RegisterChracterEditBar extends StatelessWidget {
           ),
           Icon(
             Icons.square,
+            color: Colors.white,
             size: 20,
           ),
           SizedBox(
@@ -87,12 +89,30 @@ class RegisterChracterEditBar extends StatelessWidget {
           Expanded(
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text('모험단 이름', style: TextStyle(fontSize: 16)),
+              child: Text(
+                '모험단 이름',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                  fontFamily: 'DNFForgedBlade',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ),
           isEditing
-              ? IconButton(onPressed: onEdit, icon: Icon(Icons.edit_off))
-              : IconButton(onPressed: onEdit, icon: Icon(Icons.edit)),
+              ? IconButton(
+                  onPressed: onEdit,
+                  icon: Icon(
+                    Icons.edit_off,
+                    color: Colors.white,
+                  ))
+              : IconButton(
+                  onPressed: onEdit,
+                  icon: Icon(
+                    Icons.edit,
+                    color: Colors.white,
+                  )),
           SizedBox(
             width: 10,
           ),
@@ -118,7 +138,14 @@ class CharacterProfile extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[600],
+        image: DecorationImage(
+          image: AssetImage('assets/images/character_background.png'),
+          colorFilter: ColorFilter.mode(
+            Colors.black.withOpacity(0.4),
+            BlendMode.darken,
+          ),
+          fit: BoxFit.cover,
+        ),
       ),
       child: Stack(
         children: [
@@ -126,7 +153,7 @@ class CharacterProfile extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 7),
             child: Container(
-              color: Colors.blue,
+              color: Colors.transparent,
               child: Column(
                 children: [
                   _GuildNameWidget(),
@@ -172,7 +199,10 @@ class CharacterProfile extends StatelessWidget {
                 );
               });
         },
-        icon: Icon(Icons.delete),
+        icon: Icon(
+          Icons.delete_forever,
+          color: Color(0xffE80D0D),
+        ),
       ),
     );
   }
@@ -183,6 +213,7 @@ class CharacterProfile extends StatelessWidget {
       child: Text(
         '[길드 이름]',
         style: TextStyle(
+          color: Colors.white,
           fontSize: 6,
           fontFamily: 'DNFForgedBlade',
           fontWeight: FontWeight.w700,
@@ -207,6 +238,7 @@ class CharacterProfile extends StatelessWidget {
           Text(
             '명성 수치',
             style: TextStyle(
+              color: CustomColor.epic(),
               fontSize: 6,
               fontFamily: 'DNFForgedBlade',
               fontWeight: FontWeight.w500,
@@ -239,19 +271,22 @@ class CharacterProfile extends StatelessWidget {
       child: Text(
         '캐릭터 이름',
         style: TextStyle(
-            fontSize: 8,
-            fontFamily: 'DNFForgedBlade',
-            fontWeight: FontWeight.w500),
+          color: Colors.white,
+          fontSize: 8,
+          fontFamily: 'DNFForgedBlade',
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }
 
   Widget _TotalItemLevelWidget() {
     return Container(
-      margin: EdgeInsets.only(top: 4),
+      margin: EdgeInsets.only(top: 4, bottom: 4),
       child: Text(
         '총합 템레벨',
         style: TextStyle(
+          color: CustomColor.epic(),
           fontSize: 6,
           fontFamily: 'DNFForgedBlade',
           fontWeight: FontWeight.w500,
