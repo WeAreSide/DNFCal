@@ -6,9 +6,9 @@ class SearchModel with ChangeNotifier {
   bool _isSubmitted = false;
   final _fieldText = TextEditingController();
   final List<String> _servers = [
-    '전체', '안톤', '바칼', '카인', '카시야스', '디레지에', '힐더', '프레이', '시로코'
+    'all', 'anton', 'bakal', 'cain', 'casillas', 'diregie', 'hilder', 'prey', 'siroco'
   ];
-  String _selectedServer = "전체";
+  String _selectedServer = "all";
   List<SearchCharacterModel> _searchedCharacter = [];
 
   String get inputText => _inputText;
