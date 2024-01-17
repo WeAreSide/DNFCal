@@ -15,7 +15,6 @@ class SearchCharacterModel {
   String jobName = "";
   String jobGrowName = "";
   int? fame = 0;
-
   SearchCharacterModel(
       {required this.serverId,
       required this.characterId,
