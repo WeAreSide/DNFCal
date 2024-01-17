@@ -9,16 +9,13 @@ import 'package:provider/provider.dart';
 import '../../models/SearchCharacterModel.dart';
 
 class CharacterSearchBar extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _CharacterSearchState();
   }
 }
 
 class _CharacterSearchState extends State<CharacterSearchBar> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,8 +24,8 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
         height: 40,
         child: TextField(
           controller: context.read<SearchModel>().fieldText,
-          onSubmitted: (text) {
-            search(text);
+          onSubmitted: (text) async {
+            await search(text);
             context.read<SearchModel>().setSubmitted(true);
           },
           decoration: InputDecoration(
@@ -40,7 +37,10 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(24),
             ),
-            contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18), // Adjust as needed
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 18,
+            ), // Adjust as needed
           ),
           style: const TextStyle(
             fontFamily: 'DNFForgedBlade', // Replace with your custom font family
@@ -51,10 +51,13 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
       ),
     );
   }
-  void search(String text) async {
-    final List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text);
-    for (SearchCharacterModel character in characterList) {
-      print("APIMODEL: ${character.characterName}, ${character.jobName}");
+
+  Future<void> search(String text) async {
+    try {
+      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text);
+      context.read<SearchModel>().setSearchedCharacter(characterList);
+    } catch (e) {
+      print("Error during search: $e");
     }
   }
 }
