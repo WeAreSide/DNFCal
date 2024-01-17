@@ -14,7 +14,7 @@ class SearchCharacterModel {
   String jobGrowId = "";
   String jobName = "";
   String jobGrowName = "";
-  int fame = 0;
+  int? fame = 0;
 
   SearchCharacterModel(
       {required this.serverId,
@@ -29,5 +29,16 @@ class SearchCharacterModel {
 
   factory SearchCharacterModel.fromJson(Map<String, dynamic> json) {
     return _$SearchCharacterModelFromJson(json);
+  }
+}
+
+@JsonSerializable()
+class CharacterListResponse {
+  List<SearchCharacterModel> rows;
+
+  CharacterListResponse({required this.rows});
+
+  factory CharacterListResponse.fromJson(Map<String, dynamic> json) {
+    return _$CharacterListResponseFromJson(json);
   }
 }

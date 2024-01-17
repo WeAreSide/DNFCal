@@ -2,8 +2,11 @@ import 'dart:developer';
 
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:dnf_cal/models/SearchModel.dart';
+import 'package:dnf_cal/utils/APIModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../models/SearchCharacterModel.dart';
 
 class CharacterSearchBar extends StatefulWidget {
 
@@ -24,11 +27,9 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
         height: 40,
         child: TextField(
           controller: context.read<SearchModel>().fieldText,
-          onChanged: (text) {
-          },
           onSubmitted: (text) {
+            search(text);
             context.read<SearchModel>().setSubmitted(true);
-            print("Search: context.read<SearchModel>().setSubmitted(true)");
           },
           decoration: InputDecoration(
             hintText: '모험단 이름',
@@ -49,5 +50,11 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
         ),
       ),
     );
+  }
+  void search(String text) async {
+    final List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text);
+    for (SearchCharacterModel character in characterList) {
+      print("APIMODEL: ${character.characterName}, ${character.jobName}");
+    }
   }
 }
