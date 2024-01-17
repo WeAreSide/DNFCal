@@ -13,9 +13,11 @@ class SearchCharacterCellScroll extends StatelessWidget {
       children: [
         for (var character in context.watch<SearchModel>().searchedCharacter)
           Padding(
-            padding: EdgeInsets.only(bottom: 16),
-            // child: SearchCharacterCell(),
-            child: SearchCharacterCell(character: character),
+            padding: const EdgeInsets.only(bottom: 16),
+            child: InkWell(
+              onTap: () {},
+              child: SearchCharacterCell(character: character),
+            )
           ),
       ],
     ));
