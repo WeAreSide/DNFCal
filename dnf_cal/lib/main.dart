@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:dnf_cal/utils/APIModel.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:dnf_cal/screens/CharacterSearchPage.dart';
@@ -59,7 +60,6 @@ class MyAppState extends State<MyAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("appkey ${dotenv.env['appKey']}");
     return ChangeNotifierProvider(
       create: (BuildContext context) => SearchModel(),
       child: GestureDetector(
