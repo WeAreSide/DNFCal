@@ -6,28 +6,12 @@ import '../models/SearchCharacterModel.dart';
 
 
 class APIModel {
-
-  static void getServer(String characterName) async {
+  static Future<List<SearchCharacterModel>> fetchDataFromApi(String characterName, String serverId) async {
     String apikey = dotenv.env['appKey'] ?? "";
     String baseUrl = "https://api.neople.co.kr";
     try {
       var response = await Dio().get(
-          '$baseUrl/df/servers/all/characters?characterName=$characterName&apikey=$apikey');
-      if (response.statusCode == 200) {
-        String result = response.data.toString();
-        print("APIModel: $result");
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  static Future<List<SearchCharacterModel>> fetchDataFromApi(String characterName) async {
-    String apikey = dotenv.env['appKey'] ?? "";
-    String baseUrl = "https://api.neople.co.kr";
-    try {
-      var response = await Dio().get(
-          '$baseUrl/df/servers/all/characters?characterName=$characterName&apikey=$apikey');
+          '$baseUrl/df/servers/$serverId/characters?characterName=$characterName&apikey=$apikey');
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonResponse = response.data;
         final CharacterListResponse characterListResponse =

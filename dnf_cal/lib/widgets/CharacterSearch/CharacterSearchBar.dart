@@ -19,7 +19,7 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 24, left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20),
       child: SizedBox(
         height: 40,
         child: TextField(
@@ -54,7 +54,7 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
 
   Future<void> search(String text) async {
     try {
-      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text);
+      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text, context.read<SearchModel>().selectedServer);
       context.read<SearchModel>().setSearchedCharacter(characterList);
     } catch (e) {
       print("Error during search: $e");

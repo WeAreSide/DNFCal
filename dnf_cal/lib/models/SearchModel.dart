@@ -17,6 +17,15 @@ class SearchModel with ChangeNotifier {
   List<String> get servers => _servers;
   String get selectedServer => _selectedServer;
   List<SearchCharacterModel> get searchedCharacter => _searchedCharacter;
+  List<SearchCharacterModel> get filteredCharacter {
+    if (selectedServer == "all") {
+      return _searchedCharacter;
+    } else {
+     return _searchedCharacter.where((element) {
+        return element.serverId == _selectedServer;
+      }).toList();
+    }
+  }
 
   void setSearchedCharacter(List<SearchCharacterModel> characters) {
     _searchedCharacter = characters;
@@ -44,5 +53,4 @@ class SearchModel with ChangeNotifier {
     _selectedServer = serverName;
     notifyListeners();
   }
-
 }

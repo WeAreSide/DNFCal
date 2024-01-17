@@ -11,16 +11,14 @@ class SearchCharacterCellScroll extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(
       children: [
-        for (var character in context.watch<SearchModel>().searchedCharacter)
-          if (character.serverId == context.read<SearchModel>().selectedServer
-              || context.read<SearchModel>().selectedServer == "all")
-            Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: InkWell(
-                  onTap: () {},
-                  child: SearchCharacterCell(character: character),
-                )
-            ),
+        for (var character
+            in context.watch<SearchModel>().searchedCharacter)
+          Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: InkWell(
+                onTap: () {},
+                child: SearchCharacterCell(character: character),
+              )),
       ],
     ));
   }

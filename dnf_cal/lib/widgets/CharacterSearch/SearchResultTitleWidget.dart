@@ -38,6 +38,7 @@ class _SearchResultTitleState extends State<SearchResultTitleWidget> {
                       context.read<SearchModel>().setInputText();
                       context.read<SearchModel>().clearText();
                       context.read<SearchModel>().setSearchedCharacter([]);
+                      context.read<SearchModel>().setServer('all');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xffD9D9D9).withOpacity(0.6),
