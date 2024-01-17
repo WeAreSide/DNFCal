@@ -2,33 +2,31 @@ import 'dart:developer';
 
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:dnf_cal/models/SearchModel.dart';
+import 'package:dnf_cal/utils/APIModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CharacterSearchBar extends StatefulWidget {
+import '../../models/SearchCharacterModel.dart';
 
+class CharacterSearchBar extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _CharacterSearchState();
   }
 }
 
 class _CharacterSearchState extends State<CharacterSearchBar> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 24, left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20),
       child: SizedBox(
         height: 40,
         child: TextField(
           controller: context.read<SearchModel>().fieldText,
-          onChanged: (text) {
-          },
-          onSubmitted: (text) {
+          onSubmitted: (text) async {
+            await search(text);
             context.read<SearchModel>().setSubmitted(true);
-            print("Search: context.read<SearchModel>().setSubmitted(true)");
           },
           decoration: InputDecoration(
             hintText: '모험단 이름',
@@ -39,7 +37,10 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(24),
             ),
-            contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18), // Adjust as needed
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 18,
+            ), // Adjust as needed
           ),
           style: const TextStyle(
             fontFamily: 'DNFForgedBlade', // Replace with your custom font family
@@ -49,5 +50,14 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
         ),
       ),
     );
+  }
+
+  Future<void> search(String text) async {
+    try {
+      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text, context.read<SearchModel>().selectedServer);
+      context.read<SearchModel>().setSearchedCharacter(characterList);
+    } catch (e) {
+      print("Error during search: $e");
+    }
   }
 }

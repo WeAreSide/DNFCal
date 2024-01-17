@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:dnf_cal/utils/APIModel.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:dnf_cal/screens/CharacterSearchPage.dart';
 import 'package:dnf_cal/screens/MainPage.dart';
@@ -8,7 +10,10 @@ import 'package:dnf_cal/widgets/global/BottomNavigationWidget.dart';
 import 'package:flutter/material.dart';
 import 'models/SearchModel.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");	// 추가
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => SearchModel()),

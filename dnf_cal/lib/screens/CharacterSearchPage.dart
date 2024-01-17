@@ -1,10 +1,10 @@
-import 'package:dnf_cal/widgets/CharacterSearch/ServerSelectionWidget.dart';
 import 'package:dnf_cal/widgets/SearchCharacterCell.dart';
 import 'package:flutter/material.dart';
 import '../widgets/CharacterSearch/CharacterSearchBar.dart';
 import '../widgets/CharacterSearch/CharacterSearchTopWidget.dart';
 import '../widgets/CharacterSearch/SearchCharacterCellScroll.dart';
 import '../widgets/CharacterSearch/SearchResultTitleWidget.dart';
+import '../widgets/CharacterSearch/SearchAndFilterWidget.dart';
 
 class CharacterSearchPage extends StatefulWidget {
   const CharacterSearchPage({Key? key}) : super(key: key);
@@ -25,13 +25,12 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
           padding: EdgeInsets.only(top: statusBarHeight + 16),
           child: const CharacterSearchPageTopWidget(),
         ),
-        CharacterSearchBar(),
         Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: ServerSelectionWidget(),
+          padding: const EdgeInsets.all(20),
+          child: SearchAndFilterWidget(),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.only(top: 0),
           child: SearchResultTitleWidget(),
         ),
         Expanded(
