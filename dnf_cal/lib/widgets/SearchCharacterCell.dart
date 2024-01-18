@@ -61,6 +61,8 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                     child: Image.network(
                       'https://img-api.neople.co.kr/df/servers/${character.serverId}/characters/${character.characterId}?zoom=2',
                       fit: BoxFit.fitHeight,
+                      width: 67,
+                      height: 77,
                     ),
                   ),
                 ),
