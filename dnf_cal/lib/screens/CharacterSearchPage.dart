@@ -1,5 +1,8 @@
+import 'package:dnf_cal/models/SearchModel.dart';
 import 'package:dnf_cal/widgets/SearchCharacterCell.dart';
+import 'package:dnf_cal/widgets/global/DnfText.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/CharacterSearch/CharacterSearchBar.dart';
 import '../widgets/CharacterSearch/CharacterSearchTopWidget.dart';
 import '../widgets/CharacterSearch/SearchCharacterCellScroll.dart';
