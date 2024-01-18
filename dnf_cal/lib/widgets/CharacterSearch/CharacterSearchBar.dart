@@ -54,7 +54,7 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
 
   Future<void> search(String text) async {
     try {
-      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text, context.read<SearchModel>().selectedServer);
+      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text, context.read<SearchModel>().selectedServerId);
       context.read<SearchModel>().setSearchedCharacter(characterList);
     } catch (e) {
       print("Error during search: $e");

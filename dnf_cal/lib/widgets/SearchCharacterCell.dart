@@ -78,7 +78,7 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                       ),
                     ),
                     DnfText(
-                      "${character.serverId} 명성 ${character.fame == null ? 0 : character.fame}",
+                      "명성 ${character.fame == null ? 0 : character.fame}",
                       color: CustomColor.epic(),
                       fontSize: 10,
                     ),
