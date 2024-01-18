@@ -29,7 +29,7 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
             context.read<SearchModel>().setSubmitted(true);
           },
           decoration: InputDecoration(
-            hintText: '모험단 이름',
+            hintText: '캐릭터 이름',
             suffixIcon: const Icon(Icons.search),
             filled: true,
             fillColor: const Color(0xffD9D9D9).withOpacity(0.6),
@@ -54,7 +54,7 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
 
   Future<void> search(String text) async {
     try {
-      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text, context.read<SearchModel>().selectedServer);
+      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text, context.read<SearchModel>().selectedServerId);
       context.read<SearchModel>().setSearchedCharacter(characterList);
     } catch (e) {
       print("Error during search: $e");

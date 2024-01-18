@@ -61,6 +61,8 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                     child: Image.network(
                       'https://img-api.neople.co.kr/df/servers/${character.serverId}/characters/${character.characterId}?zoom=2',
                       fit: BoxFit.fitHeight,
+                      width: 67,
+                      height: 77,
                     ),
                   ),
                 ),
@@ -78,7 +80,7 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                       ),
                     ),
                     DnfText(
-                      "${character.serverId} 명성 ${character.fame == null ? 0 : character.fame}",
+                      "명성 ${character.fame == null ? 0 : character.fame}",
                       color: CustomColor.epic(),
                       fontSize: 10,
                     ),
