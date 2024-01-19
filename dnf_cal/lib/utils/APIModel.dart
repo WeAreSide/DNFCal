@@ -11,7 +11,7 @@ class APIModel {
     String baseUrl = "https://api.neople.co.kr";
     try {
       var response = await Dio().get(
-          '$baseUrl/df/servers/$serverId/characters?characterName=$characterName&apikey=$apikey');
+          '$baseUrl/df/servers/$serverId/characters?characterName=$characterName&wordType=full&apikey=$apikey');
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonResponse = response.data;
         final CharacterListResponse characterListResponse =
