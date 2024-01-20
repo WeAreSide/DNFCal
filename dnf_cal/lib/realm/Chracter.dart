@@ -8,6 +8,7 @@ class _Character {
   late final String characterId;
 
   String? characterName;
+  String? serverId;
   int? level;
   String? jobId;
   String? jobGrowId;

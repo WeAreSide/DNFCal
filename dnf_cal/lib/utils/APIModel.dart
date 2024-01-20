@@ -49,6 +49,7 @@ class APIModel {
         if (character == null) {
           character = Character(info.characterId);
           character.characterName = info.characterName;
+          character.serverId = info.serverId;
           character.level = info.level;
           character.jobId = info.jobId;
           character.jobGrowId = info.jobGrowId;
@@ -99,7 +100,6 @@ class APIModel {
     // jsonResponse['equipment']는 List<Map<String, dynamic>> 형태
     // 각 아이템의 slotId를 확인하여 level을 더함
     for (var item in jsonResponse['equipment']) {
-      print(totalItemLevel);
       if (SlotId.contains(item['slotId'])) {
         // item에는 customOption 또는 fixedOption이 있고, 둘 중 하나만 있음
         // customOption이 있으면 customOption의 level을 더하고, fixedOption이 있으면 fixedOption의 level을 더함

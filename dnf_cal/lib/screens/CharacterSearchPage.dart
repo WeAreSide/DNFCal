@@ -30,14 +30,6 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
           padding: EdgeInsets.only(top: statusBarHeight + 16),
           child: const CharacterSearchPageTopWidget(),
         ),
-        IconButton(
-            onPressed: () {
-              var realm = Realm(Configuration.local([Character.schema]));
-              realm.write(() {
-                realm.deleteAll<Character>();
-              });
-            },
-            icon: Icon(Icons.delete)),
         Padding(
           padding: const EdgeInsets.all(20),
           child: SearchAndFilterWidget(),

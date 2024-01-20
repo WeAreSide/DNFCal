@@ -12,6 +12,7 @@ class Character extends _Character
   Character(
     String characterId, {
     String? characterName,
+    String? serverId,
     int? level,
     String? jobId,
     String? jobGrowId,
@@ -24,6 +25,7 @@ class Character extends _Character
   }) {
     RealmObjectBase.set(this, 'characterId', characterId);
     RealmObjectBase.set(this, 'characterName', characterName);
+    RealmObjectBase.set(this, 'serverId', serverId);
     RealmObjectBase.set(this, 'level', level);
     RealmObjectBase.set(this, 'jobId', jobId);
     RealmObjectBase.set(this, 'jobGrowId', jobGrowId);
@@ -49,6 +51,12 @@ class Character extends _Character
   @override
   set characterName(String? value) =>
       RealmObjectBase.set(this, 'characterName', value);
+
+  @override
+  String? get serverId =>
+      RealmObjectBase.get<String>(this, 'serverId') as String?;
+  @override
+  set serverId(String? value) => RealmObjectBase.set(this, 'serverId', value);
 
   @override
   int? get level => RealmObjectBase.get<int>(this, 'level') as int?;
@@ -118,6 +126,7 @@ class Character extends _Character
     return const SchemaObject(ObjectType.realmObject, Character, 'Character', [
       SchemaProperty('characterId', RealmPropertyType.string, primaryKey: true),
       SchemaProperty('characterName', RealmPropertyType.string, optional: true),
+      SchemaProperty('serverId', RealmPropertyType.string, optional: true),
       SchemaProperty('level', RealmPropertyType.int, optional: true),
       SchemaProperty('jobId', RealmPropertyType.string, optional: true),
       SchemaProperty('jobGrowId', RealmPropertyType.string, optional: true),

@@ -43,7 +43,8 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
             ), // Adjust as needed
           ),
           style: const TextStyle(
-            fontFamily: 'DNFForgedBlade', // Replace with your custom font family
+            fontFamily:
+                'DNFForgedBlade', // Replace with your custom font family
             fontSize: 16, // Adjust the font size as needed
             // Other text style properties
           ),
@@ -54,7 +55,10 @@ class _CharacterSearchState extends State<CharacterSearchBar> {
 
   Future<void> search(String text) async {
     try {
-      List<SearchCharacterModel> characterList = await APIModel.fetchDataFromApi(text, context.read<SearchModel>().selectedServerId);
+      context.read<SearchModel>().setSearchedCharacter([]);
+      List<SearchCharacterModel> characterList =
+          await APIModel.fetchDataFromApi(
+              text, context.read<SearchModel>().selectedServerId);
       context.read<SearchModel>().setSearchedCharacter(characterList);
     } catch (e) {
       print("Error during search: $e");

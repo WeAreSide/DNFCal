@@ -29,7 +29,30 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
       onTapUp: (_) {
         setState(() {
           isPressed = false;
-          APIModel.fetchCharacterFromApi(character);
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text("캐릭터 등록"),
+                  content: Text(
+                      "'${character.characterName}' 캐릭터를 등록하시겠습니까?\n등록된 캐릭터는 등록된 캐릭터 탭에서 확인 가능합니다."),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("취소"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        APIModel.fetchCharacterFromApi(character);
+                        Navigator.pop(context);
+                      },
+                      child: Text("확인"),
+                    ),
+                  ],
+                );
+              });
         });
         // Handle button click here
       },

@@ -34,21 +34,18 @@ class RegisterChracterEditBar extends StatelessWidget {
               ),
             ),
           ),
-          Consumer<RegisterCharacterModel>(
-            builder: (context, registerCharacterModel, child) {
-              return IconButton(
-                onPressed: () {
-                  registerCharacterModel.toggleEditing();
-                },
-                icon: Icon(
-                  Provider.of<RegisterCharacterModel>(context).isEditing
-                      ? Icons.edit_off
-                      : Icons.edit,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              );
+          IconButton(
+            onPressed: () {
+              Provider.of<RegisterCharacterModel>(context, listen: false)
+                  .toggleEditing();
             },
+            icon: Icon(
+              Provider.of<RegisterCharacterModel>(context).isEditing
+                  ? Icons.edit_off
+                  : Icons.edit,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
           SizedBox(
             width: 10,
