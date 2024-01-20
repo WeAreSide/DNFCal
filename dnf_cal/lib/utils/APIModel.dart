@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:dnf_cal/models/RegisterCharacterModel.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 import 'package:realm/realm.dart';
 import 'package:dnf_cal/realm/Chracter.dart';
 

@@ -1,3 +1,5 @@
+import 'package:dnf_cal/models/SearchCharacterModel.dart';
+import 'package:dnf_cal/utils/APIModel.dart';
 import 'package:dnf_cal/widgets/RegisterCharacterPage/CharacterProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +36,12 @@ class RegisterCharacterModel with ChangeNotifier {
       }
     });
     loadCharacterList();
+    notifyListeners();
+  }
+
+  Future<void> addCharacter(SearchCharacterModel info) async {
+    await APIModel.fetchCharacterFromApi(info);
+    _characterList = _realm.all<Character>().toList();
     notifyListeners();
   }
 }

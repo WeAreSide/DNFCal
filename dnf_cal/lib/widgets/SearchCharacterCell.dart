@@ -1,8 +1,10 @@
 import 'package:dnf_cal/models/CustomColor.dart';
+import 'package:dnf_cal/models/RegisterCharacterModel.dart';
 import 'package:dnf_cal/models/SearchCharacterModel.dart';
 import 'package:dnf_cal/utils/APIModel.dart';
 import 'package:flutter/material.dart';
 import 'package:dnf_cal/widgets/global/DnfText.dart';
+import 'package:provider/provider.dart';
 
 class SearchCharacterCell extends StatefulWidget {
   SearchCharacterModel character;
@@ -44,9 +46,11 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                       child: Text("취소"),
                     ),
                     TextButton(
-                      onPressed: () {
-                        APIModel.fetchCharacterFromApi(character);
+                      onPressed: () async {
                         Navigator.pop(context);
+                        await Provider.of<RegisterCharacterModel>(context,
+                                listen: false)
+                            .addCharacter(character);
                       },
                       child: Text("확인"),
                     ),
