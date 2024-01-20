@@ -2,8 +2,7 @@ import 'package:dnf_cal/models/RegisterCharacterModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-Widget DeleteRegisterCharacterButton(BuildContext context,
-    {required int id}) {
+Widget DeleteRegisterCharacterButton(BuildContext context) {
   return Consumer<RegisterCharacterModel>(
     builder: (context, registerCharacterModel, child) {
       if (registerCharacterModel.isEditing) {
@@ -28,7 +27,6 @@ Widget DeleteRegisterCharacterButton(BuildContext context,
                         TextButton(
                             onPressed: () {
                               Navigator.pop(context);
-                              registerCharacterModel.removeItem(id);
                             },
                             child: Text('확인')),
                       ],

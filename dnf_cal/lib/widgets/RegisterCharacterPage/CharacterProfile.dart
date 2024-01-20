@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CharacterProfile extends StatelessWidget {
-  final int id;
   const CharacterProfile({
     Key? key,
-    required this.id,
   }) : super(key: key);
 
   @override
@@ -30,7 +28,6 @@ class CharacterProfile extends StatelessWidget {
         children: [
           DeleteRegisterCharacterButton(
             context,
-            id: id,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 7),

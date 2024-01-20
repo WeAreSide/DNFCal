@@ -13,6 +13,36 @@ class RegisterCharacterPage extends StatefulWidget {
   State<RegisterCharacterPage> createState() => _RegisterCharacterPageState();
 }
 
+class _RegisterCharacters extends StatelessWidget {
+  const _RegisterCharacters({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Selector<RegisterCharacterModel, bool>(
+        selector: (context, registerCharacterModel) =>
+            registerCharacterModel.isEditing,
+        builder: (context, items, child) {
+          return GridView(
+            padding: const EdgeInsets.only(top: 22, left: 22, right: 22),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 18,
+            ),
+            children: List.generate(
+              3,
+              (index) => SizedBox(
+                height: 100,
+                child: CharacterProfile(),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
 class _RegisterCharacterPageState extends State<RegisterCharacterPage> {
   @override
   Widget build(BuildContext context) {
@@ -27,30 +57,7 @@ class _RegisterCharacterPageState extends State<RegisterCharacterPage> {
             height: statusBarHeight + 16,
           ),
           RegisterChracterEditBar(),
-          Expanded(
-            child: Selector<RegisterCharacterModel, int>(
-              selector: (context, registerCharacterModel) =>
-                  registerCharacterModel.items.length,
-              builder: (context, items, child) {
-                return GridView(
-                  padding: const EdgeInsets.only(top: 22, left: 22, right: 22),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 18,
-                  ),
-                  children: Provider.of<RegisterCharacterModel>(context)
-                      .items
-                      .map(
-                        (item) => CharacterProfile(
-                          id: item,
-                        ),
-                      )
-                      .toList(),
-                );
-              },
-            ),
-          ),
+          _RegisterCharacters(),
         ],
       ),
     );

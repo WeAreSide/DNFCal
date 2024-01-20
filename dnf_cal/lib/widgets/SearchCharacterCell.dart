@@ -1,15 +1,16 @@
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:dnf_cal/models/SearchCharacterModel.dart';
+import 'package:dnf_cal/utils/APIModel.dart';
 import 'package:flutter/material.dart';
 import 'package:dnf_cal/widgets/global/DnfText.dart';
 
 class SearchCharacterCell extends StatefulWidget {
-
   SearchCharacterModel character;
   SearchCharacterCell({required this.character});
 
   @override
-  _SearchCharacterCellState createState() => _SearchCharacterCellState(character: character);
+  _SearchCharacterCellState createState() =>
+      _SearchCharacterCellState(character: character);
 }
 
 class _SearchCharacterCellState extends State<SearchCharacterCell> {
@@ -28,6 +29,7 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
       onTapUp: (_) {
         setState(() {
           isPressed = false;
+          APIModel.fetchCharacterFromApi(character);
         });
         // Handle button click here
       },
@@ -48,7 +50,8 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                     image: AssetImage('assets/images/character_background.png'),
                     fit: BoxFit.cover,
                   ),
-                  border: Border.all(color: CustomColor.buttonStroke(), width: 1),
+                  border:
+                      Border.all(color: CustomColor.buttonStroke(), width: 1),
                   borderRadius: BorderRadius.circular(16.0)),
             ),
             Row(
@@ -56,8 +59,8 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                 Container(
                   height: 100,
                   child: Padding(
-                    padding:
-                    EdgeInsets.only(left: 12, top: 12, bottom: 12, right: 36),
+                    padding: EdgeInsets.only(
+                        left: 12, top: 12, bottom: 12, right: 36),
                     child: Image.network(
                       'https://img-api.neople.co.kr/df/servers/${character.serverId}/characters/${character.characterId}?zoom=2',
                       fit: BoxFit.fitHeight,
