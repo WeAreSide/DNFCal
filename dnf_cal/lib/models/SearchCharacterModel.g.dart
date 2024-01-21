@@ -47,3 +47,9 @@ Map<String, dynamic> _$CharacterListResponseToJson(
     <String, dynamic>{
       'rows': instance.rows,
     };
+
+// **************************************************************************
+// RealmObjectGenerator
+// **************************************************************************
+
+// ignore_for_file: type=lint

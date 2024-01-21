@@ -1,3 +1,4 @@
+
 import 'package:dnf_cal/models/SearchCharacterModel.dart';
 import 'package:dnf_cal/widgets/SearchCharacterCell.dart';
 import 'package:dnf_cal/widgets/global/DnfText.dart';
@@ -27,4 +28,3 @@ class SearchCharacterCellScroll extends StatelessWidget {
     );
   }
 }
-

@@ -1,15 +1,18 @@
 import 'package:dnf_cal/models/CustomColor.dart';
+import 'package:dnf_cal/models/RegisterCharacterModel.dart';
 import 'package:dnf_cal/models/SearchCharacterModel.dart';
+import 'package:dnf_cal/utils/APIModel.dart';
 import 'package:flutter/material.dart';
 import 'package:dnf_cal/widgets/global/DnfText.dart';
+import 'package:provider/provider.dart';
 
 class SearchCharacterCell extends StatefulWidget {
-
   SearchCharacterModel character;
   SearchCharacterCell({required this.character});
 
   @override
-  _SearchCharacterCellState createState() => _SearchCharacterCellState(character: character);
+  _SearchCharacterCellState createState() =>
+      _SearchCharacterCellState(character: character);
 }
 
 class _SearchCharacterCellState extends State<SearchCharacterCell> {
@@ -28,6 +31,32 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
       onTapUp: (_) {
         setState(() {
           isPressed = false;
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text("캐릭터 등록"),
+                  content: Text(
+                      "'${character.characterName}' 캐릭터를 등록하시겠습니까?\n등록된 캐릭터는 등록된 캐릭터 탭에서 확인 가능합니다."),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("취소"),
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                        await Provider.of<RegisterCharacterModel>(context,
+                                listen: false)
+                            .addCharacter(character);
+                      },
+                      child: Text("확인"),
+                    ),
+                  ],
+                );
+              });
         });
         // Handle button click here
       },
@@ -48,7 +77,8 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                     image: AssetImage('assets/images/character_background.png'),
                     fit: BoxFit.cover,
                   ),
-                  border: Border.all(color: CustomColor.buttonStroke(), width: 1),
+                  border:
+                      Border.all(color: CustomColor.buttonStroke(), width: 1),
                   borderRadius: BorderRadius.circular(16.0)),
             ),
             Row(
@@ -56,8 +86,8 @@ class _SearchCharacterCellState extends State<SearchCharacterCell> {
                 Container(
                   height: 100,
                   child: Padding(
-                    padding:
-                    EdgeInsets.only(left: 12, top: 12, bottom: 12, right: 36),
+                    padding: EdgeInsets.only(
+                        left: 12, top: 12, bottom: 12, right: 36),
                     child: Image.network(
                       'https://img-api.neople.co.kr/df/servers/${character.serverId}/characters/${character.characterId}?zoom=2',
                       fit: BoxFit.fitHeight,

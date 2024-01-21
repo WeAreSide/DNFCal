@@ -8,6 +8,9 @@ class RegisterChracterEditBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = Provider.of<RegisterCharacterModel>(context);
+    final characterList = model.characterList;
+    final bool isEmpty = characterList.isEmpty;
     return Container(
       margin: const EdgeInsets.only(bottom: 22),
       height: 41,
@@ -29,29 +32,26 @@ class RegisterChracterEditBar extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: DnfText(
-                '모험단 이름',
+                isEmpty ? "캐릭터를 등록해주세요" : "캐릭터 등록",
                 fontSize: 16,
               ),
             ),
           ),
-          Consumer<RegisterCharacterModel>(
-            builder: (context, registerCharacterModel, child) {
-              return IconButton(
-                onPressed: () {
-                  registerCharacterModel.toggleEditing();
-                },
-                icon: Icon(
-                  Provider.of<RegisterCharacterModel>(context).isEditing
-                      ? Icons.edit_off
-                      : Icons.edit,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              );
+          IconButton(
+            onPressed: () {
+              Provider.of<RegisterCharacterModel>(context, listen: false)
+                  .toggleEditing();
             },
+            icon: Icon(
+              Provider.of<RegisterCharacterModel>(context).isEditing
+                  ? Icons.edit_off
+                  : Icons.edit,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
           SizedBox(
-            width: 10,
+            width: 20,
           ),
         ],
       ),
