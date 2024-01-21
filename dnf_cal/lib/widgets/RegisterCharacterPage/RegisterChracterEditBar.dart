@@ -32,7 +32,7 @@ class RegisterChracterEditBar extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: DnfText(
-                isEmpty ? "캐릭터를 등록해주세요" : "캐릭터 등록",
+                context.watch<RegisterCharacterModel>().isEmpty ? "캐릭터를 등록해주세요" : "캐릭터 등록",
                 fontSize: 16,
               ),
             ),
