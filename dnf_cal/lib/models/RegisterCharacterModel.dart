@@ -8,6 +8,7 @@ import 'package:dnf_cal/realm/Chracter.dart';
 
 class RegisterCharacterModel with ChangeNotifier {
   bool _isEditing = false;
+  bool _isEmpty = false;
   final Realm _realm;
   List<Character> _characterList = [];
 
@@ -15,6 +16,7 @@ class RegisterCharacterModel with ChangeNotifier {
       : _realm = Realm(Configuration.local([Character.schema]));
 
   bool get isEditing => _isEditing;
+  bool get isEmpty => _isEmpty;
   List<Character> get characterList => _characterList;
 
   toggleEditing() {
@@ -36,12 +38,16 @@ class RegisterCharacterModel with ChangeNotifier {
       }
     });
     loadCharacterList();
+    if (characterList.isEmpty) {
+      _isEmpty = true;
+    }
     notifyListeners();
   }
 
   Future<void> addCharacter(SearchCharacterModel info) async {
     await APIModel.fetchCharacterFromApi(info);
     _characterList = _realm.all<Character>().toList();
+    _isEmpty = false;
     notifyListeners();
   }
 }
