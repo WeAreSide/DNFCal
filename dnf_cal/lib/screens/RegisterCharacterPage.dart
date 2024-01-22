@@ -1,6 +1,6 @@
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:dnf_cal/models/RegisterCharacterModel.dart';
-import 'package:dnf_cal/realm/Chracter.dart';
+import 'package:dnf_cal/realm/Character.dart';
 import 'package:dnf_cal/widgets/RegisterCharacterPage/CharacterProfile.dart';
 import 'package:dnf_cal/widgets/RegisterCharacterPage/RegisterChracterEditBar.dart';
 import 'package:flutter/material.dart';

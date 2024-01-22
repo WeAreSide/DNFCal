@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:realm/realm.dart';
-import 'package:dnf_cal/realm/Chracter.dart';
+import 'package:dnf_cal/realm/Character.dart';
 
 import '../models/SearchCharacterModel.dart';
 

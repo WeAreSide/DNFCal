@@ -1,6 +1,6 @@
 import 'package:realm/realm.dart';
 
-part 'Chracter.g.dart';
+part 'Character.g.dart';
 
 @RealmModel()
 class _Character {
@@ -18,4 +18,17 @@ class _Character {
   String? adventureName;
   String? guildName;
   int? totalItemLevel;
+}
+
+@RealmModel()
+class _Calendar {
+  @PrimaryKey()
+  late final String date;
+
+  int? year;
+  int? month;
+  int? day;
+  int? hour;
+  int? miniute;
+  int? itemLevel;
 }

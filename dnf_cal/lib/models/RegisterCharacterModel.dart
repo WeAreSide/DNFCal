@@ -4,7 +4,7 @@ import 'package:dnf_cal/widgets/RegisterCharacterPage/CharacterProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:realm/realm.dart';
-import 'package:dnf_cal/realm/Chracter.dart';
+import 'package:dnf_cal/realm/Character.dart';
 
 class RegisterCharacterModel with ChangeNotifier {
   bool _isEditing = false;

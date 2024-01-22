@@ -14,7 +14,7 @@ import 'package:dnf_cal/widgets/global/BottomNavigationWidget.dart';
 import 'package:flutter/material.dart';
 import 'models/SearchModel.dart';
 import 'package:realm/realm.dart';
-import 'realm/Chracter.dart';
+import 'realm/Character.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
