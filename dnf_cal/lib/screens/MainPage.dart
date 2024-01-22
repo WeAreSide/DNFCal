@@ -48,6 +48,8 @@ class _MainPageState extends State<MainPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await Provider.of<RegisterCharacterModel>(context, listen: false)
           .loadCharacterList();
+      await Provider.of<RegisterCharacterModel>(context, listen: false)
+          .loadItemLevel();
     });
   }
 }

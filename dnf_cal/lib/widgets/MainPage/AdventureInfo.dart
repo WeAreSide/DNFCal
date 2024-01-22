@@ -47,10 +47,18 @@ class AdventureInfo extends StatelessWidget {
               height: 97,
               color: Colors.transparent,
               child: Center(
-                child: Icon(
-                  Icons.refresh,
-                  size: 37,
-                  color: CustomColor.darkGray(),
+                child: IconButton(
+                  onPressed: () {
+                    context
+                        .read<RegisterCharacterModel>()
+                        .updateCharacterList();
+                    context.read<RegisterCharacterModel>().loadItemLevel();
+                  },
+                  icon: Icon(
+                    Icons.refresh,
+                    size: 37,
+                    color: CustomColor.darkGray(),
+                  ),
                 ),
               ),
             ),
@@ -80,7 +88,7 @@ class AdventureInfo extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: DnfText(
-                    '최근 갱신 날짜: -',
+                    '최근 갱신 날짜: ${context.watch<RegisterCharacterModel>().lastUpdate}',
                     color: CustomColor.legendary(),
                     fontSize: 10,
                   ),

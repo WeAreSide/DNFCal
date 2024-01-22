@@ -40,8 +40,7 @@ class _RegisterCharacters extends StatefulWidget {
 class _RegisterCharactersState extends State<_RegisterCharacters> {
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<RegisterCharacterModel>(context);
-    final characterList = model.characterList;
+    final characterList = context.watch<RegisterCharacterModel>().characterList;
     return Expanded(
       child: GridView(
         padding: EdgeInsets.only(top: 22, left: 22, right: 22),
