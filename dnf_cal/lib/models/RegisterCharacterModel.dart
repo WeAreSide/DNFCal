@@ -25,8 +25,9 @@ class RegisterCharacterModel with ChangeNotifier {
   }
 
   // realm에 저장되있는 chracter 리스트를 가져와 _characterList에 저장한다.
-  loadCharacterList() {
+  Future<void> loadCharacterList() async {
     _characterList = _realm.all<Character>().toList();
+    notifyListeners();
   }
 
   // realm에 저장되있는 chracter 중 id가 일치하는 chracter를 삭제한다.

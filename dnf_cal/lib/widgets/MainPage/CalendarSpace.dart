@@ -6,6 +6,9 @@ import 'package:dnf_cal/widgets/MainPage/CalendarStyle.dart/BuildHeaderStyle.dar
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:dnf_cal/widgets/global/DnfText.dart';
+import 'package:provider/provider.dart';
+import 'package:realm/realm.dart';
+import 'package:dnf_cal/realm/Character.dart';
 
 class CalendarSpace extends StatefulWidget {
   const CalendarSpace({Key? key}) : super(key: key);
@@ -15,12 +18,9 @@ class CalendarSpace extends StatefulWidget {
 }
 
 class _CalendarSpaceState extends State<CalendarSpace> {
+  // Calendar DB에서 데이터를 가져와야 함
   final Map<DateTime, List> _itemLevel = {
-    DateTime.utc(2024, 1, 1): ['10'],
-    DateTime.utc(2024, 1, 3): ['120'],
-    DateTime.utc(2024, 1, 5): ['356'],
-    DateTime.utc(2024, 1, 8): ['362'],
-    DateTime.utc(2024, 1, 15): ['480'],
+    DateTime.utc(2024, 1, 1): ['1'],
   };
 
   @override

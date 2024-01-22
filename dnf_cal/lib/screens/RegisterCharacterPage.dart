@@ -57,11 +57,4 @@ class _RegisterCharactersState extends State<_RegisterCharacters> {
       ),
     );
   }
-
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<RegisterCharacterModel>(context, listen: false)
-        .loadCharacterList();
-  }
 }
