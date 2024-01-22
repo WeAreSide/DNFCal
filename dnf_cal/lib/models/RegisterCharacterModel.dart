@@ -46,8 +46,12 @@ class RegisterCharacterModel with ChangeNotifier {
 
   Future<void> addCharacter(SearchCharacterModel info) async {
     await APIModel.fetchCharacterFromApi(info);
+    // 모험단 이름을 찾아올 때 비어있는 index를 참조하지 않도록 1초 대기
+    await Future.delayed(Duration(seconds: 1));
     _characterList = _realm.all<Character>().toList();
-    _isEmpty = false;
+    if (characterList.isNotEmpty) {
+      _isEmpty = false;
+    }
     notifyListeners();
   }
 }

@@ -8,9 +8,18 @@ class RegisterChracterEditBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<RegisterCharacterModel>(context);
-    final characterList = model.characterList;
-    final bool isEmpty = characterList.isEmpty;
+    final String adventurerName;
+    if (context.watch<RegisterCharacterModel>().isEmpty ||
+        context.watch<RegisterCharacterModel>().characterList.isEmpty) {
+      adventurerName = "등록된 캐릭터가 없습니다.";
+    } else {
+      adventurerName = context
+              .read<RegisterCharacterModel>()
+              .characterList
+              .first
+              .adventureName ??
+          "등록된 캐릭터가 없습니다.";
+    }
     return Container(
       margin: const EdgeInsets.only(bottom: 22),
       height: 41,
@@ -32,7 +41,7 @@ class RegisterChracterEditBar extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: DnfText(
-                context.watch<RegisterCharacterModel>().isEmpty ? "캐릭터를 등록해주세요" : "캐릭터 등록",
+                adventurerName,
                 fontSize: 16,
               ),
             ),
