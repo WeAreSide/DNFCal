@@ -47,10 +47,12 @@ class RegisterChracterEditBar extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {
-              Provider.of<RegisterCharacterModel>(context, listen: false)
-                  .toggleEditing();
-            },
+            // characterList가 비어있으면 edit 버튼을 눌러도 아무런 동작을 하지 않는다.
+            onPressed: context.watch<RegisterCharacterModel>().isEmpty
+                ? null
+                : () {
+                    context.read<RegisterCharacterModel>().toggleEditing();
+                  },
             icon: Icon(
               Provider.of<RegisterCharacterModel>(context).isEditing
                   ? Icons.edit_off

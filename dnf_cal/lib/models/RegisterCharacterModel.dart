@@ -41,6 +41,7 @@ class RegisterCharacterModel with ChangeNotifier {
     if (characterList.isEmpty) {
       _isEmpty = true;
     }
+    _isEditing = false;
     notifyListeners();
   }
 
