@@ -1,12 +1,31 @@
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:dnf_cal/widgets/global/DnfText.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../models/RegisterCharacterModel.dart';
 
 class AdventureInfo extends StatelessWidget {
   const AdventureInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final String adventurerName;
+    final int characterCount;
+    if (context.watch<RegisterCharacterModel>().isEmpty ||
+        context.watch<RegisterCharacterModel>().characterList.isEmpty) {
+      adventurerName = "등록된 캐릭터가 없습니다.";
+      characterCount = 0;
+    } else {
+      adventurerName = context
+              .read<RegisterCharacterModel>()
+              .characterList
+              .first
+              .adventureName ??
+          "등록된 캐릭터가 없습니다.";
+      characterCount =
+          context.read<RegisterCharacterModel>().characterList.length;
+    }
+
     return Container(
       decoration: BoxDecoration(
         border: Border.fromBorderSide(
@@ -28,10 +47,18 @@ class AdventureInfo extends StatelessWidget {
               height: 97,
               color: Colors.transparent,
               child: Center(
-                child: Icon(
-                  Icons.refresh,
-                  size: 37,
-                  color: CustomColor.darkGray(),
+                child: IconButton(
+                  onPressed: () {
+                    context
+                        .read<RegisterCharacterModel>()
+                        .updateCharacterList();
+                    context.read<RegisterCharacterModel>().loadItemLevel();
+                  },
+                  icon: Icon(
+                    Icons.refresh,
+                    size: 37,
+                    color: CustomColor.darkGray(),
+                  ),
                 ),
               ),
             ),
@@ -42,16 +69,15 @@ class AdventureInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Align(
-                  alignment: Alignment.centerLeft,
-                  child: DnfText('모험단 이름'),
-                ),
+                    alignment: Alignment.centerLeft,
+                    child: DnfText(adventurerName)),
                 SizedBox(
                   height: 12,
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: DnfText(
-                    '등록된 캐릭터: 1개',
+                    '등록된 캐릭터: ${characterCount}개',
                     color: CustomColor.chronicle(),
                     fontSize: 10,
                   ),
@@ -62,7 +88,7 @@ class AdventureInfo extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: DnfText(
-                    '최근 갱신 날짜: 2024-01-10-12:12',
+                    '최근 갱신 날짜: ${context.watch<RegisterCharacterModel>().lastUpdate}',
                     color: CustomColor.legendary(),
                     fontSize: 10,
                   ),

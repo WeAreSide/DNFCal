@@ -1,6 +1,8 @@
 import 'package:dnf_cal/widgets/MainPage/AdventureInfo.dart';
 import 'package:dnf_cal/widgets/MainPage/CalendarSpace.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:dnf_cal/models/RegisterCharacterModel.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -38,5 +40,16 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Provider.of<RegisterCharacterModel>(context, listen: false)
+          .loadCharacterList();
+      await Provider.of<RegisterCharacterModel>(context, listen: false)
+          .loadItemLevel();
+    });
   }
 }

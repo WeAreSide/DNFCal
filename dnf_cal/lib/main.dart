@@ -14,13 +14,14 @@ import 'package:dnf_cal/widgets/global/BottomNavigationWidget.dart';
 import 'package:flutter/material.dart';
 import 'models/SearchModel.dart';
 import 'package:realm/realm.dart';
-import 'realm/Chracter.dart';
+import 'realm/Character.dart';
+import 'realm/Calendar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env"); // 추가
   // realm 초기화
-  var config = Configuration.local([Character.schema]);
+  var config = Configuration.local([Character.schema, Calendar.schema]);
   var realm = Realm(config);
   runApp(MultiProvider(
     providers: [

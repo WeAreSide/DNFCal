@@ -1,9 +1,9 @@
 import 'package:realm/realm.dart';
 
-part 'Chracter.g.dart';
+part 'Character.g.dart';
 
 @RealmModel()
-class _Character {
+class $Character {
   @PrimaryKey()
   late final String characterId;
 

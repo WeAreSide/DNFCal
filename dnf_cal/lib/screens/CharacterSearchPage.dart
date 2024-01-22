@@ -9,7 +9,7 @@ import '../widgets/CharacterSearch/CharacterSearchTopWidget.dart';
 import '../widgets/CharacterSearch/SearchCharacterCellScroll.dart';
 import '../widgets/CharacterSearch/SearchResultTitleWidget.dart';
 import '../widgets/CharacterSearch/SearchAndFilterWidget.dart';
-import '../realm/Chracter.dart';
+import '../realm/Character.dart';
 
 class CharacterSearchPage extends StatefulWidget {
   const CharacterSearchPage({Key? key}) : super(key: key);

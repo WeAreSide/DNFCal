@@ -6,7 +6,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:realm/realm.dart';
-import 'package:dnf_cal/realm/Chracter.dart';
+import 'package:dnf_cal/realm/Character.dart';
+import 'package:dnf_cal/realm/Calendar.dart';
 
 import '../models/SearchCharacterModel.dart';
 
@@ -43,7 +44,7 @@ class APIModel {
           '$baseUrl/df/servers/${info.serverId}/characters/${info.characterId}/equip/equipment?apikey=$apikey');
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonResponse = response.data;
-        var config = Configuration.local([Character.schema]);
+        var config = Configuration.local([Character.schema, Calendar.schema]);
         var realm = Realm(config);
 
         // db에 캐릭터가 있는지 확인
@@ -64,6 +65,22 @@ class APIModel {
               calculateTotalItemLevel(jsonResponse) as int;
           realm.write(() {
             realm.add(character as Character);
+          });
+        } else {
+          // 있다면 새로운 정보로 갱신
+          realm.write(() {
+            character?.characterName = info.characterName;
+            character?.serverId = info.serverId;
+            character?.level = info.level;
+            character?.jobId = info.jobId;
+            character?.jobGrowId = info.jobGrowId;
+            character?.jobName = info.jobName;
+            character?.jobGrowName = info.jobGrowName;
+            character?.fame = info.fame ?? 0;
+            character?.adventureName = jsonResponse['adventureName'];
+            character?.guildName = jsonResponse['guildName'];
+            character?.totalItemLevel =
+                calculateTotalItemLevel(jsonResponse) as int;
           });
         }
 

@@ -8,9 +8,18 @@ class RegisterChracterEditBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<RegisterCharacterModel>(context);
-    final characterList = model.characterList;
-    final bool isEmpty = characterList.isEmpty;
+    final String adventurerName;
+    if (context.watch<RegisterCharacterModel>().isEmpty ||
+        context.watch<RegisterCharacterModel>().characterList.isEmpty) {
+      adventurerName = "등록된 캐릭터가 없습니다.";
+    } else {
+      adventurerName = context
+              .read<RegisterCharacterModel>()
+              .characterList
+              .first
+              .adventureName ??
+          "등록된 캐릭터가 없습니다.";
+    }
     return Container(
       margin: const EdgeInsets.only(bottom: 22),
       height: 41,
@@ -32,16 +41,18 @@ class RegisterChracterEditBar extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: DnfText(
-                context.watch<RegisterCharacterModel>().isEmpty ? "캐릭터를 등록해주세요" : "캐릭터 등록",
+                adventurerName,
                 fontSize: 16,
               ),
             ),
           ),
           IconButton(
-            onPressed: () {
-              Provider.of<RegisterCharacterModel>(context, listen: false)
-                  .toggleEditing();
-            },
+            // characterList가 비어있으면 edit 버튼을 눌러도 아무런 동작을 하지 않는다.
+            onPressed: context.watch<RegisterCharacterModel>().isEmpty
+                ? null
+                : () {
+                    context.read<RegisterCharacterModel>().toggleEditing();
+                  },
             icon: Icon(
               Provider.of<RegisterCharacterModel>(context).isEditing
                   ? Icons.edit_off

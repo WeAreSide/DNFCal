@@ -1,6 +1,6 @@
 import 'package:dnf_cal/models/CustomColor.dart';
 import 'package:dnf_cal/models/RegisterCharacterModel.dart';
-import 'package:dnf_cal/realm/Chracter.dart';
+import 'package:dnf_cal/realm/Character.dart';
 import 'package:dnf_cal/widgets/RegisterCharacterPage/CharacterProfile.dart';
 import 'package:dnf_cal/widgets/RegisterCharacterPage/RegisterChracterEditBar.dart';
 import 'package:flutter/material.dart';
@@ -40,8 +40,7 @@ class _RegisterCharacters extends StatefulWidget {
 class _RegisterCharactersState extends State<_RegisterCharacters> {
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<RegisterCharacterModel>(context);
-    final characterList = model.characterList;
+    final characterList = context.watch<RegisterCharacterModel>().characterList;
     return Expanded(
       child: GridView(
         padding: EdgeInsets.only(top: 22, left: 22, right: 22),
@@ -56,12 +55,5 @@ class _RegisterCharactersState extends State<_RegisterCharacters> {
         ],
       ),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<RegisterCharacterModel>(context, listen: false)
-        .loadCharacterList();
   }
 }
