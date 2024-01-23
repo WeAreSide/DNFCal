@@ -72,12 +72,12 @@ class CharacterProfile extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.square,
-            size: 6,
+          Image.asset(
+            'assets/images/fame_icon.png',
+            width: 7,
           ),
           SizedBox(
-            width: 4,
+            width: 1,
           ),
           DnfText(
             '${character?.fame ?? 0}',
@@ -124,9 +124,9 @@ class CharacterProfile extends StatelessWidget {
     } else if (character.totalItemLevel! < 240) {
       color = CustomColor.uncommon();
     } else if (character.totalItemLevel! < 360) {
-      color = CustomColor.unique();
+      color = CustomColor.rare();
     } else if (character.totalItemLevel! < 480) {
-      color = CustomColor.legendary();
+      color = CustomColor.unique();
     } else {
       color = CustomColor.epic();
     }

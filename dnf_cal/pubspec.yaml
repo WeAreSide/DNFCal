@@ -73,6 +73,8 @@ flutter:
     - assets/images/default_background.png
     - assets/images/character_background.png
     - assets/images/dummy_character.png
+    - assets/images/app_icon.png
+    - assets/images/fame_icon.png
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
