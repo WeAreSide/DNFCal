@@ -21,23 +21,20 @@ class RegisterChracterEditBar extends StatelessWidget {
           "등록된 캐릭터가 없습니다.";
     }
     return Container(
-      margin: const EdgeInsets.only(bottom: 22),
+      margin: const EdgeInsets.only(bottom: 22, left: 20, right: 20),
       height: 41,
       color: Colors.transparent,
       child: Row(
         children: [
-          SizedBox(
-            width: 20,
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Image.asset(
+              'assets/images/app_icon.png',
+              width: 30,
+            ),
           ),
-          Icon(
-            Icons.square,
-            color: Colors.white,
-            size: 30,
-          ),
-          SizedBox(
-            width: 16,
-          ),
-          Expanded(
+          Padding(
+            padding: EdgeInsets.only(left: 20),
             child: Align(
               alignment: Alignment.centerLeft,
               child: DnfText(
@@ -46,6 +43,7 @@ class RegisterChracterEditBar extends StatelessWidget {
               ),
             ),
           ),
+          Spacer(),
           IconButton(
             // characterList가 비어있으면 edit 버튼을 눌러도 아무런 동작을 하지 않는다.
             onPressed: context.watch<RegisterCharacterModel>().isEmpty
@@ -60,9 +58,6 @@ class RegisterChracterEditBar extends StatelessWidget {
               color: Colors.white,
               size: 30,
             ),
-          ),
-          SizedBox(
-            width: 20,
           ),
         ],
       ),

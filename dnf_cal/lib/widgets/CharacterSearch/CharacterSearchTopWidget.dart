@@ -15,15 +15,9 @@ class CharacterSearchPageTopWidget extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.centerLeft,
-              child: Container(
+              child: Image.asset(
+                'assets/images/app_icon.png',
                 width: 30,
-                height: 30,
-                decoration: ShapeDecoration(
-                  color: Color(0xFFD9D9D9),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
               ),
             ),
             Padding(

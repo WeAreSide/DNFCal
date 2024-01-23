@@ -14,15 +14,9 @@ class SettingTopWidget extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Container(
+              child: Image.asset(
+                'assets/images/app_icon.png',
                 width: 30,
-                height: 30,
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFD9D9D9),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
               ),
             ),
           ),
