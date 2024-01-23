@@ -24,6 +24,7 @@ class RegisterCharacterModel with ChangeNotifier {
   List<Character> get characterList => _characterList;
   Map<DateTime, List> get itemLevel => _itemLevel;
   String get lastUpdate => _lastUpdate;
+  Realm get realm => _realm;
 
   toggleEditing() {
     _isEditing = !_isEditing;
@@ -66,8 +67,7 @@ class RegisterCharacterModel with ChangeNotifier {
     int averageItemLevel = totalItemLevel ~/ _characterList.length;
     // 위에서 구한 정보를 바탕으로 Calendar에 저장한다.
     // 오늘 날짜(년, 월, 일)에 이미 저장된 정보가 있는지 검사
-    var calendar = _realm.find<Calendar>(
-        "${now.year}-${now.month}-${now.day}-${now.hour}:${now.minute}");
+    var calendar = _realm.find<Calendar>("${now.year}-${now.month}-${now.day}");
     // 있다면 갱신, 없다면 추가
     if (calendar != null) {
       _realm.write(() {
@@ -78,7 +78,7 @@ class RegisterCharacterModel with ChangeNotifier {
     } else {
       _realm.write(() {
         _realm.add(Calendar(
-          "${now.year}-${now.month}-${now.day}-${now.hour}:${now.minute}",
+          "${now.year}-${now.month}-${now.day}",
           year: now.year,
           month: now.month,
           day: now.day,
