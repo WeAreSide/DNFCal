@@ -34,8 +34,9 @@ class _SettingPageState extends State<SettingPage> {
           height: 54,
           child: ElevatedButton(
             onPressed: () => {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => OpenSourcePage()))
+              // Navigator.of(context).push(
+              //     MaterialPageRoute(builder: (context) => OpenSourcePage()))
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) => LicensePage()))
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF0B1218),
