@@ -1,7 +1,7 @@
 import 'dart:ffi';
 import 'dart:ui';
 import 'dart:async';
-import 'package:path/path.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:dnf_cal/models/RegisterCharacterModel.dart';
 import 'package:dnf_cal/utils/APIModel.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
