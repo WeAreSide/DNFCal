@@ -56,6 +56,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner:  ^2.3.3
   json_serializable: ^6.6.0
+  flutter_native_splash: ^2.3.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -75,6 +76,7 @@ flutter:
     - assets/images/dummy_character.png
     - assets/images/app_icon.png
     - assets/images/fame_icon.png
+    - assets/images/splash.png
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
