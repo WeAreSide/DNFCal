@@ -193,7 +193,7 @@ class CharacterProfileByDate extends StatelessWidget {
     } else if (characterItemLevel < 480) {
       color = CustomColor.unique();
     } else {
-      color = CustomColor.epic();
+      color = CustomColor.legendary();
     }
     return Container(
       margin: EdgeInsets.only(top: 4, bottom: 4),
