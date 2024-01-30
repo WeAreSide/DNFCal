@@ -128,7 +128,7 @@ class CharacterProfile extends StatelessWidget {
     } else if (character.totalItemLevel! < 480) {
       color = CustomColor.unique();
     } else {
-      color = CustomColor.epic();
+      color = CustomColor.legendary();
     }
     return Container(
       margin: EdgeInsets.only(top: 4, bottom: 4),
