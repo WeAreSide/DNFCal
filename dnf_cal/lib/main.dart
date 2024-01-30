@@ -12,6 +12,7 @@ import 'package:dnf_cal/screens/RegisterCharacterPage.dart';
 import 'package:dnf_cal/screens/SettingPage.dart';
 import 'package:dnf_cal/widgets/global/BottomNavigationWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'models/SearchModel.dart';
 import 'package:realm/realm.dart';
 import 'realm/Character.dart';
@@ -20,6 +21,11 @@ import 'realm/Calendar.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env"); // 추가
+  // 세로 모드 고정
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   // realm 초기화
   var config = Configuration.local([Character.schema, Calendar.schema]);
   var realm = Realm(config);
