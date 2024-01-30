@@ -14,5 +14,10 @@ class _Calendar {
   int? hour;
   int? miniute;
   int? itemLevel;
-  late List<$Character> characterList;
+  List<String> characterIdList = [];
+  List<String> characterNameList = [];
+  List<String> characterGuildNameList = [];
+  List<String> characterServerIdList = [];
+  List<int> characterItemLevelList = [];
+  List<int> characterFameList = [];
 }

@@ -113,19 +113,17 @@ CalendarBuilders buildCalendarBuilders() {
               if (calendar == null) {
                 return;
               }
-              // 가져온 캘린더 정보를 토대로 해당 날짜의 캐릭터 리스트를 가져온다.
-              List<Character> characterList = calendar.characterList;
-              // 가져온 캐릭터 리스트를 토대로 해당 날짜의 캐릭터 정보를 가져온다.
-              // 가져온 캐릭터 정보를 토대로 해당 날짜의 캐릭터 정보를 표시한다.
-              for (Character character in characterList) {
-                print(character.characterName);
-              }
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => PastCharacterInfoPage(
-                    characterList: characterList,
                     date: day,
+                    characterIdList: calendar.characterIdList,
+                    characterFameList: calendar.characterFameList,
+                    characterItemLevelList: calendar.characterItemLevelList,
+                    characterGuildNameList: calendar.characterGuildNameList,
+                    characterNameList: calendar.characterNameList,
+                    serverIdList: calendar.characterServerIdList,
                   ),
                 ),
               );
