@@ -97,7 +97,7 @@ CalendarBuilders buildCalendarBuilders() {
             levelColor = CustomColor.unique();
             break;
           case 4:
-            levelColor = CustomColor.epic();
+            levelColor = CustomColor.legendary();
             break;
           default:
             levelColor = Colors.red;
