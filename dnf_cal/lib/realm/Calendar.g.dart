@@ -17,7 +17,12 @@ class Calendar extends _Calendar
     int? hour,
     int? miniute,
     int? itemLevel,
-    Iterable<Character> characterList = const [],
+    Iterable<String> characterIdList = const [],
+    Iterable<String> characterNameList = const [],
+    Iterable<String> characterGuildNameList = const [],
+    Iterable<String> characterServerIdList = const [],
+    Iterable<int> characterItemLevelList = const [],
+    Iterable<int> characterFameList = const [],
   }) {
     RealmObjectBase.set(this, 'date', date);
     RealmObjectBase.set(this, 'year', year);
@@ -26,8 +31,18 @@ class Calendar extends _Calendar
     RealmObjectBase.set(this, 'hour', hour);
     RealmObjectBase.set(this, 'miniute', miniute);
     RealmObjectBase.set(this, 'itemLevel', itemLevel);
-    RealmObjectBase.set<RealmList<Character>>(
-        this, 'characterList', RealmList<Character>(characterList));
+    RealmObjectBase.set<RealmList<String>>(
+        this, 'characterIdList', RealmList<String>(characterIdList));
+    RealmObjectBase.set<RealmList<String>>(
+        this, 'characterNameList', RealmList<String>(characterNameList));
+    RealmObjectBase.set<RealmList<String>>(this, 'characterGuildNameList',
+        RealmList<String>(characterGuildNameList));
+    RealmObjectBase.set<RealmList<String>>(this, 'characterServerIdList',
+        RealmList<String>(characterServerIdList));
+    RealmObjectBase.set<RealmList<int>>(
+        this, 'characterItemLevelList', RealmList<int>(characterItemLevelList));
+    RealmObjectBase.set<RealmList<int>>(
+        this, 'characterFameList', RealmList<int>(characterFameList));
   }
 
   Calendar._();
@@ -68,11 +83,49 @@ class Calendar extends _Calendar
   set itemLevel(int? value) => RealmObjectBase.set(this, 'itemLevel', value);
 
   @override
-  RealmList<Character> get characterList =>
-      RealmObjectBase.get<Character>(this, 'characterList')
-          as RealmList<Character>;
+  RealmList<String> get characterIdList =>
+      RealmObjectBase.get<String>(this, 'characterIdList') as RealmList<String>;
   @override
-  set characterList(covariant RealmList<Character> value) =>
+  set characterIdList(covariant RealmList<String> value) =>
+      throw RealmUnsupportedSetError();
+
+  @override
+  RealmList<String> get characterNameList =>
+      RealmObjectBase.get<String>(this, 'characterNameList')
+          as RealmList<String>;
+  @override
+  set characterNameList(covariant RealmList<String> value) =>
+      throw RealmUnsupportedSetError();
+
+  @override
+  RealmList<String> get characterGuildNameList =>
+      RealmObjectBase.get<String>(this, 'characterGuildNameList')
+          as RealmList<String>;
+  @override
+  set characterGuildNameList(covariant RealmList<String> value) =>
+      throw RealmUnsupportedSetError();
+
+  @override
+  RealmList<String> get characterServerIdList =>
+      RealmObjectBase.get<String>(this, 'characterServerIdList')
+          as RealmList<String>;
+  @override
+  set characterServerIdList(covariant RealmList<String> value) =>
+      throw RealmUnsupportedSetError();
+
+  @override
+  RealmList<int> get characterItemLevelList =>
+      RealmObjectBase.get<int>(this, 'characterItemLevelList')
+          as RealmList<int>;
+  @override
+  set characterItemLevelList(covariant RealmList<int> value) =>
+      throw RealmUnsupportedSetError();
+
+  @override
+  RealmList<int> get characterFameList =>
+      RealmObjectBase.get<int>(this, 'characterFameList') as RealmList<int>;
+  @override
+  set characterFameList(covariant RealmList<int> value) =>
       throw RealmUnsupportedSetError();
 
   @override
@@ -94,8 +147,18 @@ class Calendar extends _Calendar
       SchemaProperty('hour', RealmPropertyType.int, optional: true),
       SchemaProperty('miniute', RealmPropertyType.int, optional: true),
       SchemaProperty('itemLevel', RealmPropertyType.int, optional: true),
-      SchemaProperty('characterList', RealmPropertyType.object,
-          linkTarget: 'Character', collectionType: RealmCollectionType.list),
+      SchemaProperty('characterIdList', RealmPropertyType.string,
+          collectionType: RealmCollectionType.list),
+      SchemaProperty('characterNameList', RealmPropertyType.string,
+          collectionType: RealmCollectionType.list),
+      SchemaProperty('characterGuildNameList', RealmPropertyType.string,
+          collectionType: RealmCollectionType.list),
+      SchemaProperty('characterServerIdList', RealmPropertyType.string,
+          collectionType: RealmCollectionType.list),
+      SchemaProperty('characterItemLevelList', RealmPropertyType.int,
+          collectionType: RealmCollectionType.list),
+      SchemaProperty('characterFameList', RealmPropertyType.int,
+          collectionType: RealmCollectionType.list),
     ]);
   }
 }

@@ -67,26 +67,59 @@ class RegisterCharacterModel with ChangeNotifier {
     int averageItemLevel = totalItemLevel ~/ _characterList.length;
     // 위에서 구한 정보를 바탕으로 Calendar에 저장한다.
     // 오늘 날짜(년, 월, 일)에 이미 저장된 정보가 있는지 검사
-    var calendar = _realm.find<Calendar>("${now.year}-${now.month}-${now.day}");
-    // 있다면 갱신, 없다면 추가
-    if (calendar != null) {
+    List<String> characterIdList = [];
+    List<String> characterNameList = [];
+    List<String> characterGuildNameList = [];
+    List<int> characterItemLevelList = [];
+    List<int> characterFameList = [];
+    List<String> characterServerIdList = [];
+    for (Character character in _characterList) {
+      characterIdList.add(character.characterId ?? "");
+      characterNameList.add(character.characterName ?? "");
+      characterGuildNameList.add(character.guildName ?? "");
+      characterItemLevelList.add(character.totalItemLevel ?? 0);
+      characterFameList.add(character.fame ?? 0);
+      characterServerIdList.add(character.serverId ?? "");
+    }
+    Calendar? calendar =
+        _realm.find<Calendar>('${now.year}-${now.month}-${now.day}');
+    if (calendar == null) {
+      calendar = Calendar('${now.year}-${now.month}-${now.day}');
+      calendar.year = now.year;
+      calendar.month = now.month;
+      calendar.day = now.day;
+      calendar.hour = now.hour;
+      calendar.miniute = now.minute;
+      calendar.itemLevel = averageItemLevel;
+      calendar.characterIdList.addAll(characterIdList);
+      calendar.characterNameList.addAll(characterNameList);
+      calendar.characterGuildNameList.addAll(characterGuildNameList);
+      calendar.characterItemLevelList.addAll(characterItemLevelList);
+      calendar.characterFameList.addAll(characterFameList);
+      calendar.characterServerIdList.addAll(characterServerIdList);
       _realm.write(() {
-        calendar.itemLevel = averageItemLevel;
-        calendar.characterList.clear();
-        calendar.characterList.addAll(_characterList);
+        _realm.add(calendar as Calendar);
       });
     } else {
       _realm.write(() {
-        _realm.add(Calendar(
-          "${now.year}-${now.month}-${now.day}",
-          year: now.year,
-          month: now.month,
-          day: now.day,
-          hour: now.hour,
-          miniute: now.minute,
-          itemLevel: averageItemLevel,
-          characterList: _characterList,
-        ));
+        calendar!.year = now.year;
+        calendar.month = now.month;
+        calendar.day = now.day;
+        calendar.hour = now.hour;
+        calendar.miniute = now.minute;
+        calendar.itemLevel = averageItemLevel;
+        calendar.characterIdList.clear();
+        calendar.characterNameList.clear();
+        calendar.characterGuildNameList.clear();
+        calendar.characterItemLevelList.clear();
+        calendar.characterFameList.clear();
+        calendar.characterServerIdList.clear();
+        calendar.characterIdList.addAll(characterIdList);
+        calendar.characterNameList.addAll(characterNameList);
+        calendar.characterGuildNameList.addAll(characterGuildNameList);
+        calendar.characterItemLevelList.addAll(characterItemLevelList);
+        calendar.characterFameList.addAll(characterFameList);
+        calendar.characterServerIdList.addAll(characterServerIdList);
       });
     }
     // Calendar에 저장된 정보를 가져와 _itemLevel에 저장한다.
