@@ -59,7 +59,7 @@ class CharacterProfile extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 4),
       child: DnfText(
-        '${character?.guildName ?? '길드 없음'}}',
+        '${character?.guildName ?? '길드 없음'}',
         fontSize: 6,
         fontWeight: FontWeight.w700,
       ),

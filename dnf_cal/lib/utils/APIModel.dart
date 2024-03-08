@@ -132,6 +132,10 @@ class APIModel {
           } else if (item['fixedOption'] != null) {
             totalItemLevel += item['fixedOption']['level'] as num;
           }
+        } else if (item['itemName'] != null &&
+            item['itemName'].startsWith("불가침의 영역")) {
+          num level = item['customOption']['level'] as num;
+          if (level > 60) totalItemLevel += (level - 60) * 4;
         }
       }
     }
